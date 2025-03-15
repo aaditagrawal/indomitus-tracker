@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Indomitus Tracker",
-  description: "Created by Aadit Agrawal",
+  description: "Made by Aadit Agrawal",
 };
 
 export default function RootLayout({
