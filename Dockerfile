@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && ln -s /usr/bin/python3 /usr/bin/python
 
 # Copy package.json and other config files
-COPY package.json ./
+COPY package.json bun.lock ./
 COPY tsconfig.json next.config.ts ./
 
 # Install dependencies
