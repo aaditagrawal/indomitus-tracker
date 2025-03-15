@@ -2,12 +2,14 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+
 import {
   LayoutDashboard,
   Users,
   UserPlus,
-  LogOut,
   Settings,
+  LogOut,
+  Home,
 } from "lucide-react";
 
 interface DashboardLayoutProps {
@@ -61,6 +63,15 @@ export function DashboardLayout({
               <Button variant="ghost" className="w-full justify-start">
                 <UserPlus className="mr-2 h-5 w-5" />
                 Organizers
+              </Button>
+            </Link>
+          )}
+
+          {isAdmin && (
+            <Link href="/admin/rooms">
+              <Button variant="ghost" className="w-full justify-start">
+                <Home className="mr-2 h-5 w-5" />
+                Rooms
               </Button>
             </Link>
           )}

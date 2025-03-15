@@ -1,3 +1,4 @@
+// src/app/api/teams/[id]/route.ts
 import { NextResponse } from "next/server";
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
@@ -71,6 +72,57 @@ export async function GET(
     console.error("Error fetching team details:", error);
     return NextResponse.json(
       { error: "Failed to fetch team details" },
+      { status: 500 },
+    );
+  }
+}
+
+// DELETE method to delete a team
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
+  try {
+    const teamId = parseInt(params.id);
+
+    if (isNaN(teamId)) {
+      return NextResponse.json({ error: "Invalid team ID" }, { status: 400 });
+    }
+
+    const client = createClient({
+      url: `file:${process.env.DB_FILE_NAME || "./indomitus.db"}`,
+    });
+
+    const db = drizzle(client);
+
+    // Use a transaction to delete participants and then the team
+    const result = await db.transaction(async (tx) => {
+      // First delete all participants
+      await tx.delete(participants).where(eq(participants.team_id, teamId));
+
+      // Then delete the team
+      const deletedTeam = await tx
+        .delete(teams)
+        .where(eq(teams.team_id, teamId))
+        .returning();
+
+      return deletedTeam;
+    });
+
+    await client.close();
+
+    if (result.length === 0) {
+      return NextResponse.json({ error: "Team not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: "Team deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error deleting team:", error);
+    return NextResponse.json(
+      { error: "Failed to delete team" },
       { status: 500 },
     );
   }

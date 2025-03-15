@@ -14,6 +14,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
   Form,
   FormField,
   FormItem,
@@ -31,6 +38,7 @@ const organizerFormSchema = z
     email: z.string().email("Please enter a valid email address"),
     password: z.string().min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string().min(8, "Please confirm your password"),
+    role: z.enum(["ORGANIZER", "ADMIN"]), // Add role selection
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -55,6 +63,7 @@ export default function AddOrganizerPage() {
       email: "",
       password: "",
       confirmPassword: "",
+      role: "ORGANIZER", // Default to ORGANIZER
     },
   });
 
@@ -88,19 +97,19 @@ export default function AddOrganizerPage() {
         body: JSON.stringify({
           email: data.email,
           password: data.password,
-          role: "ORGANIZER", // Always create with ORGANIZER role
+          role: data.role, // Send the selected role
         }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to create organizer");
+        throw new Error(errorData.error || "Failed to create user");
       }
 
       // Redirect to organizers page on success
       router.push("/admin/organizers");
     } catch (error) {
-      console.error("Error creating organizer:", error);
+      console.error("Error creating user:", error);
       // Show error notification
     } finally {
       setLoading(false);
@@ -111,6 +120,9 @@ export default function AddOrganizerPage() {
     return <div className="p-8">Loading...</div>;
   }
 
+  // Only allow SUPERADMIN to create ADMIN accounts
+  const canCreateAdmin = user.role === "SUPERADMIN";
+
   return (
     <DashboardLayout
       userRole={user.role as "ADMIN" | "SUPERADMIN"}
@@ -118,18 +130,16 @@ export default function AddOrganizerPage() {
     >
       <div className="space-y-6 max-w-md mx-auto">
         <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold tracking-tight">
-            Add New Organizer
-          </h2>
+          <h2 className="text-3xl font-bold tracking-tight">Add New Account</h2>
         </div>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Organizer Account</CardTitle>
+                <CardTitle>New Account</CardTitle>
                 <CardDescription>
-                  Create a new organizer account.
+                  Create a new organizer or admin account.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -142,7 +152,7 @@ export default function AddOrganizerPage() {
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="organizer@example.com"
+                          placeholder="user@example.com"
                           {...field}
                         />
                       </FormControl>
@@ -150,6 +160,34 @@ export default function AddOrganizerPage() {
                     </FormItem>
                   )}
                 />
+
+                {/* Role selection - only shown for SUPERADMIN */}
+                {canCreateAdmin && (
+                  <FormField
+                    control={form.control}
+                    name="role"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Role</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select a role" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="ORGANIZER">Organizer</SelectItem>
+                            <SelectItem value="ADMIN">Admin</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
 
                 <FormField
                   control={form.control}
@@ -196,7 +234,7 @@ export default function AddOrganizerPage() {
                   Cancel
                 </Button>
                 <Button type="submit" disabled={loading}>
-                  {loading ? "Creating..." : "Create Organizer"}
+                  {loading ? "Creating..." : "Create Account"}
                 </Button>
               </CardFooter>
             </Card>

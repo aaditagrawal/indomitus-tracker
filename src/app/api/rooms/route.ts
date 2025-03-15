@@ -24,3 +24,39 @@ export async function GET() {
     );
   }
 }
+
+export async function POST(request: Request) {
+  try {
+    const { roomName } = await request.json();
+
+    if (!roomName) {
+      return NextResponse.json(
+        { error: "Room name is required" },
+        { status: 400 },
+      );
+    }
+
+    const client = createClient({
+      url: `file:${process.env.DB_FILE_NAME || "./indomitus.db"}`,
+    });
+
+    const db = drizzle(client);
+
+    const result = await db
+      .insert(rooms)
+      .values({
+        room_name: roomName,
+      })
+      .returning();
+
+    await client.close();
+
+    return NextResponse.json(result[0]);
+  } catch (error) {
+    console.error("Error creating room:", error);
+    return NextResponse.json(
+      { error: "Failed to create room" },
+      { status: 500 },
+    );
+  }
+}
