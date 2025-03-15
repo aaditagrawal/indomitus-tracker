@@ -50,24 +50,15 @@ COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/next.config.ts ./next.config.ts
 COPY --from=builder /app/src ./src
-
-# Copy the entrypoint script
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+COPY --from=builder /app/indomitus.db ./indomitus.db
 
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV DB_FILE_NAME=/app/data/indomitus.db
-
-# Create directory for the database if it doesn't exist
-RUN mkdir -p /app/data
+ENV DB_FILE_NAME=./indomitus.db
 
 # Expose the port the app will run on
 EXPOSE 3000
-
-# Use our custom entrypoint
-ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Start the application
 CMD ["bun", "run", "start"]
