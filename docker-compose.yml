@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  indomitus-tracker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "20250:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DB_FILE_NAME=./indomitus.db
+    volumes:
+      - ./indomitus.db:/app/indomitus.db
+    restart: unless-stopped
