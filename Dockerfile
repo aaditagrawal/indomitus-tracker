@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 # Copy package.json and other config files
 COPY package.json ./
-COPY tsconfig.json next.config.js ./
+COPY tsconfig.json next.config.ts ./
 
 # Install dependencies
 RUN bun install
