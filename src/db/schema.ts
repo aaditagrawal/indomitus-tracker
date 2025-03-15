@@ -21,6 +21,8 @@ export const participants = sqliteTable("participants", {
   phone_number: text("phone_number"),
   email: text("email"),
   college: text("college"),
+  gender: text("gender"), // Add gender field
+  discord_id: text("discord_id"), // Add Discord ID field
   team_id: int("team_id").notNull(),
 });
 

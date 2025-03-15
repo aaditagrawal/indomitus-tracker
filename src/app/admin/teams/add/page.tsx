@@ -42,16 +42,20 @@ const teamFormSchema = z.object({
   teamName: z.string().min(3, "Team name must be at least 3 characters"),
   roomId: z.string().min(1, "Please select a room"),
   college: z.string().min(1, "College name is required"),
-  teamLeaderIndex: z.number().min(0).max(2),
+  teamLeaderIndex: z.number().min(0),
   members: z
     .array(
       z.object({
         name: z.string().min(1, "Name is required"),
         email: z.string().email("Valid email is required"),
         phone: z.string().min(10, "Valid phone number is required"),
+        gender: z.string().optional(),
+        // Allow any characters in Discord ID, including special characters
+        discordId: z.string().optional(),
       }),
     )
-    .length(3, "A team must have exactly 3 members"),
+    .min(1, "A team must have at least 1 member")
+    .max(3, "A team cannot have more than 3 members"),
 });
 
 type TeamFormValues = z.infer<typeof teamFormSchema>;
@@ -65,8 +69,44 @@ export default function AddTeamPage() {
   } | null>(null);
   const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState(true);
+  const [memberCount, setMemberCount] = useState(3); // Default to 3 members
 
-  // Initialize form
+  // Add these functions to handle adding/removing members in both files
+  const addMember = () => {
+    if (memberCount < 3) {
+      setMemberCount(memberCount + 1);
+      const currentMembers = form.getValues().members;
+      form.setValue("members", [
+        ...currentMembers,
+        { name: "", email: "", phone: "", gender: "", discordId: "" },
+      ]);
+    }
+  };
+
+  const removeMember = (indexToRemove: number) => {
+    if (memberCount > 1) {
+      setMemberCount(memberCount - 1);
+      const currentMembers = form.getValues().members;
+
+      // Adjust teamLeaderIndex if needed
+      const currentLeaderIndex = form.getValues().teamLeaderIndex;
+      if (currentLeaderIndex === indexToRemove) {
+        // If we're removing the leader, set the first remaining member as leader
+        form.setValue("teamLeaderIndex", 0);
+      } else if (currentLeaderIndex > indexToRemove) {
+        // If we're removing someone before the leader, decrement the leader index
+        form.setValue("teamLeaderIndex", currentLeaderIndex - 1);
+      }
+
+      // Remove the member
+      form.setValue(
+        "members",
+        currentMembers.filter((_, idx) => idx !== indexToRemove),
+      );
+    }
+  };
+
+  // Initialize form with teamLeaderIndex = 0 by default
   const form = useForm<TeamFormValues>({
     resolver: zodResolver(teamFormSchema),
     defaultValues: {
@@ -75,9 +115,9 @@ export default function AddTeamPage() {
       college: "",
       teamLeaderIndex: 0,
       members: [
-        { name: "", email: "", phone: "" },
-        { name: "", email: "", phone: "" },
-        { name: "", email: "", phone: "" },
+        { name: "", email: "", phone: "", gender: "", discordId: "" },
+        { name: "", email: "", phone: "", gender: "", discordId: "" },
+        { name: "", email: "", phone: "", gender: "", discordId: "" },
       ],
     },
   });
@@ -128,6 +168,8 @@ export default function AddTeamPage() {
           name: member.name,
           email: member.email,
           phone: member.phone,
+          gender: member.gender || null, // Include gender
+          discordId: member.discordId || null, // Include Discord ID
           college: data.college,
           isLeader: index === data.teamLeaderIndex,
         })),
@@ -155,10 +197,6 @@ export default function AddTeamPage() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const setTeamLeader = (index: number) => {
-    form.setValue("teamLeaderIndex", index);
   };
 
   if (!user) {
@@ -250,31 +288,39 @@ export default function AddTeamPage() {
               <CardHeader>
                 <CardTitle>Team Members</CardTitle>
                 <CardDescription>
-                  Add the three team members and designate a team leader.
+                  Add between 1-3 team members. The first member is the team
+                  leader.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                {[0, 1, 2].map((index) => (
+                {form.getValues().members.map((_, index) => (
                   <div
                     key={index}
                     className="mb-8 p-4 border rounded-lg relative"
                   >
                     <div className="grid gap-4 mb-4">
                       <div className="flex justify-between items-center">
-                        <h3 className="font-medium">Member {index + 1}</h3>
-                        <Button
-                          type="button"
-                          variant={
-                            form.getValues().teamLeaderIndex === index
-                              ? "default"
-                              : "outline"
-                          }
-                          onClick={() => setTeamLeader(index)}
-                        >
-                          {form.getValues().teamLeaderIndex === index
-                            ? "✓ Team Leader"
-                            : "Set as Team Leader"}
-                        </Button>
+                        <h3 className="font-medium">
+                          {index === 0 ? "Team Leader" : `Member ${index + 1}`}
+                        </h3>
+                        <div className="flex gap-2">
+                          {index === 0 && (
+                            <Button type="button" variant="default" disabled>
+                              ✓ Team Leader
+                            </Button>
+                          )}
+
+                          {/* Only show remove button if we have more than 1 member */}
+                          {form.getValues().members.length > 1 && (
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              onClick={() => removeMember(index)}
+                            >
+                              Remove
+                            </Button>
+                          )}
+                        </div>
                       </div>
 
                       <FormField
@@ -326,10 +372,70 @@ export default function AddTeamPage() {
                             </FormItem>
                           )}
                         />
+
+                        {/* New Gender Field */}
+                        <FormField
+                          control={form.control}
+                          name={`members.${index}.gender`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Gender</FormLabel>
+                              <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select gender" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="male">Male</SelectItem>
+                                  <SelectItem value="female">Female</SelectItem>
+                                  <SelectItem value="other">Other</SelectItem>
+                                  <SelectItem value="prefer_not_to_say">
+                                    Prefer not to say
+                                  </SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        {/* New Discord ID Field */}
+                        <FormField
+                          control={form.control}
+                          name={`members.${index}.discordId`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Discord ID</FormLabel>
+                              <FormControl>
+                                <Input
+                                  placeholder="Enter Discord ID"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
                       </div>
                     </div>
                   </div>
                 ))}
+
+                {/* Add button for new members if less than 3 */}
+                {form.getValues().members.length < 3 && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={addMember}
+                    className="w-full"
+                  >
+                    Add Team Member
+                  </Button>
+                )}
               </CardContent>
               <CardFooter className="flex justify-end gap-2">
                 <Button

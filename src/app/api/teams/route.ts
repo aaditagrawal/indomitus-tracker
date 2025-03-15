@@ -9,6 +9,8 @@ interface TeamParticipant {
   email: string | null;
   phone: string | null;
   college: string | null;
+  gender: string | null;
+  discordId: string | null;
   isLeader: boolean;
 }
 
@@ -67,6 +69,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    // Use the interface for proper typing
     const data: CreateTeamData = await request.json();
     const { teamName, roomId, participants: teamParticipants } = data;
 
@@ -74,10 +77,14 @@ export async function POST(request: Request) {
       !teamName ||
       !roomId ||
       !teamParticipants ||
-      teamParticipants.length !== 3
+      teamParticipants.length < 1 ||
+      teamParticipants.length > 3
     ) {
       return NextResponse.json(
-        { error: "Missing required data or invalid number of participants" },
+        {
+          error:
+            "Missing required data or invalid number of participants (1-3 allowed)",
+        },
         { status: 400 },
       );
     }
@@ -116,18 +123,22 @@ export async function POST(request: Request) {
       const teamId = teamResult[0].team_id;
 
       // Create all participants
-      const participantPromises = teamParticipants.map(async (p) => {
-        return await tx
-          .insert(participants)
-          .values({
-            name: p.name,
-            email: p.email || null,
-            phone_number: p.phone || null,
-            college: p.college || null,
-            team_id: teamId,
-          })
-          .returning();
-      });
+      const participantPromises = teamParticipants.map(
+        async (p: TeamParticipant) => {
+          return await tx
+            .insert(participants)
+            .values({
+              name: p.name,
+              email: p.email || null,
+              phone_number: p.phone || null,
+              college: p.college || null,
+              gender: p.gender || null, // Add gender
+              discord_id: p.discordId || null, // Add discordId
+              team_id: teamId,
+            })
+            .returning();
+        },
+      );
 
       const createdParticipants = await Promise.all(participantPromises);
 

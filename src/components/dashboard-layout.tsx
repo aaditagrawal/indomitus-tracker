@@ -2,7 +2,14 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-import { LayoutDashboard, Users, UserPlus, LogOut, Home } from "lucide-react";
+import {
+  LayoutDashboard,
+  Users,
+  UserPlus,
+  LogOut,
+  Home,
+  User,
+} from "lucide-react";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -47,6 +54,15 @@ export function DashboardLayout({
             <Button variant="ghost" className="w-full justify-start">
               <Users className="mr-2 h-5 w-5" />
               Teams
+            </Button>
+          </Link>
+
+          <Link
+            href={isAdmin ? "/admin/participants" : "/organizer/participants"}
+          >
+            <Button variant="ghost" className="w-full justify-start">
+              <User className="mr-2 h-5 w-5" />
+              Participants
             </Button>
           </Link>
 

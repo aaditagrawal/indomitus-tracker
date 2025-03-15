@@ -1,4 +1,3 @@
-// src/app/admin/organizers/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -128,7 +127,22 @@ export default function OrganizersPage() {
                 organizers.map((organizer) => (
                   <TableRow key={organizer.id}>
                     <TableCell>{organizer.email}</TableCell>
-                    <TableCell>{organizer.role}</TableCell>
+                    <TableCell>
+                      {/* Display different badges based on role */}
+                      {organizer.role === "SUPERADMIN" ? (
+                        <span className="inline-flex items-center rounded-full bg-purple-100 px-2 py-1 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                          SUPERADMIN
+                        </span>
+                      ) : organizer.role === "ADMIN" ? (
+                        <span className="inline-flex items-center rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                          ADMIN
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                          ORGANIZER
+                        </span>
+                      )}
+                    </TableCell>
                     <TableCell>{organizer.teamsCount}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">

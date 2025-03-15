@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
 import { users } from "@/db/schema";
-import { eq, sql } from "drizzle-orm";
+import { eq, sql, or } from "drizzle-orm"; // Import 'or' function from drizzle-orm
 import { hashPassword } from "@/lib/auth";
 import { teamOrganizers } from "@/db/schema";
 
@@ -14,7 +14,7 @@ export async function GET() {
 
     const db = drizzle(client);
 
-    // Get organizers
+    // Get organizers, admins, and superadmins
     const organizers = await db
       .select({
         id: users.id,
@@ -22,7 +22,14 @@ export async function GET() {
         role: users.role,
       })
       .from(users)
-      .where(eq(users.role, "ORGANIZER"));
+      .where(
+        or(
+          // Use 'or' to include different roles
+          eq(users.role, "ORGANIZER"),
+          eq(users.role, "ADMIN"),
+          eq(users.role, "SUPERADMIN"),
+        ),
+      );
 
     // Get team counts for each organizer
     const organizersWithTeamCounts = await Promise.all(
