@@ -1,4 +1,3 @@
-# Dockerfile
 FROM oven/bun:latest as builder
 
 WORKDIR /app
@@ -22,7 +21,7 @@ RUN bun add react-hook-form @hookform/resolvers zod \
     class-variance-authority clsx tailwind-merge \
     @radix-ui/react-label @radix-ui/react-slot \
     @radix-ui/react-dialog @radix-ui/react-select \
-    lucide-react next-themes
+    lucide-react next-themes @libsql/client drizzle-orm better-sqlite3
 
 # Copy the rest of the application code
 COPY . .
@@ -38,6 +37,8 @@ WORKDIR /app
 # Install runtime dependencies for better-sqlite3
 RUN apt-get update && apt-get install -y \
     python3 \
+    make \
+    g++ \
     && ln -s /usr/bin/python3 /usr/bin/python \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -48,6 +49,11 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/next.config.ts ./next.config.ts
+COPY --from=builder /app/src ./src
+
+# Copy the entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Set environment variables
 ENV NODE_ENV=production
@@ -59,6 +65,9 @@ RUN mkdir -p /app/data
 
 # Expose the port the app will run on
 EXPOSE 3000
+
+# Use our custom entrypoint
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Start the application
 CMD ["bun", "run", "start"]
