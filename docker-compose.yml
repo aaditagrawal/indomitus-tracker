@@ -10,7 +10,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - DB_FILE_NAME=./indomitus.db
+      - DB_FILE_NAME=/app/data/indomitus.db
     volumes:
-      - ./indomitus.db:/app/indomitus.db
+      - ./data:/app/data
     restart: unless-stopped
