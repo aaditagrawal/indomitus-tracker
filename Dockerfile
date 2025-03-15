@@ -17,8 +17,12 @@ COPY tsconfig.json next.config.ts ./
 # Install dependencies
 RUN bun install
 
-# Install missing dependencies
-RUN bun add react-hook-form @hookform/resolvers zod
+# Install all missing dependencies
+RUN bun add react-hook-form @hookform/resolvers zod \
+    class-variance-authority clsx tailwind-merge \
+    @radix-ui/react-label @radix-ui/react-slot \
+    @radix-ui/react-dialog @radix-ui/react-select \
+    lucide-react next-themes
 
 # Copy the rest of the application code
 COPY . .
