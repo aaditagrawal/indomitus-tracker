@@ -4,12 +4,15 @@ import { createClient } from "@libsql/client";
 import { rooms, teams } from "@/db/schema";
 import { eq, sql } from "drizzle-orm";
 
+type RouteParams = Promise<{ id: string }>;
+
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: RouteParams },
 ) {
   try {
-    const roomId = parseInt(params.id);
+    const { id } = await params;
+    const roomId = parseInt(id);
     if (isNaN(roomId)) {
       return NextResponse.json({ error: "Invalid room ID" }, { status: 400 });
     }
@@ -51,11 +54,12 @@ export async function PUT(
 }
 
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } },
+  _request: Request,
+  { params }: { params: RouteParams },
 ) {
   try {
-    const roomId = parseInt(params.id);
+    const { id } = await params;
+    const roomId = parseInt(id);
     if (isNaN(roomId)) {
       return NextResponse.json({ error: "Invalid room ID" }, { status: 400 });
     }
@@ -68,11 +72,11 @@ export async function DELETE(
 
     // Check if the room is in use by any teams
     const teamsUsingRoom = await db
-      .select({ count: sql`count(*)` })
+      .select({ count: sql<number>`count(*)` })
       .from(teams)
       .where(eq(teams.room_id, roomId));
 
-    if (teamsUsingRoom[0].count > 0) {
+    if ((teamsUsingRoom[0]?.count ?? 0) > 0) {
       await client.close();
       return NextResponse.json(
         { error: "Cannot delete room that is assigned to teams" },

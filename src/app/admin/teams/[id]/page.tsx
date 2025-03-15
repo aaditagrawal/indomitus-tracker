@@ -4,7 +4,6 @@ import { useEffect, useState, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { Button } from "@/components/ui/button";
-
 import {
   Card,
   CardContent,
@@ -20,7 +19,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { Edit, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 interface Participant {
   participant_id: number;
@@ -43,9 +42,7 @@ interface TeamDetails {
 export default function AdminTeamDetailsPage() {
   const router = useRouter();
   const params = useParams();
-  const teamId = Array.isArray(params.id)
-    ? params.id[0]
-    : (params.id as string);
+  const teamId = params.id as string;
 
   const [user, setUser] = useState<{
     id: number;
@@ -116,15 +113,6 @@ export default function AdminTeamDetailsPage() {
           <h2 className="text-3xl font-bold tracking-tight">
             {loading ? "Loading Team..." : `Team: ${team?.team_name}`}
           </h2>
-          {!loading && team && teamId && (
-            <Button
-              variant="outline"
-              onClick={() => router.push(`/admin/teams/${teamId}/edit`)}
-            >
-              <Edit className="mr-2 h-4 w-4" />
-              Edit Team
-            </Button>
-          )}
         </div>
 
         {loading ? (

@@ -12,7 +12,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { Plus, Eye, Edit, Trash } from "lucide-react";
+import { Plus, Eye, Trash } from "lucide-react";
 
 interface Team {
   team_id: number;
@@ -149,15 +149,6 @@ export default function AdminTeamsPage() {
                           }
                         >
                           <Eye className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() =>
-                            router.push(`/admin/teams/${team.team_id}/edit`)
-                          }
-                        >
-                          <Edit className="h-4 w-4" />
                         </Button>
                         <Button
                           variant="ghost"

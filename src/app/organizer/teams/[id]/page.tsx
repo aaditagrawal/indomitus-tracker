@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,7 +19,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { Edit, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 interface Participant {
   participant_id: number;
@@ -39,12 +39,23 @@ interface TeamDetails {
   participants: Participant[];
 }
 
-export default function OrganizerTeamDetailsPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+const fetchTeamDetails = async (teamId: string) => {
+  try {
+    const response = await fetch(`/api/teams/${teamId}`);
+    if (!response.ok) throw new Error("Failed to fetch team details");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching team details:", error);
+    return null;
+  }
+};
+
+export default function OrganizerTeamDetailsPage() {
   const router = useRouter();
+  const params = useParams();
+  const teamId = params.id as string;
+
   const [user, setUser] = useState<{
     id: number;
     email: string;
@@ -70,22 +81,15 @@ export default function OrganizerTeamDetailsPage({
     setUser(parsedUser);
 
     // Fetch team details
-    fetchTeamDetails();
-  }, [router, params.id]);
-
-  const fetchTeamDetails = async () => {
-    try {
+    const getTeamDetails = async () => {
       setLoading(true);
-      const response = await fetch(`/api/teams/${params.id}`);
-      if (!response.ok) throw new Error("Failed to fetch team details");
-      const data = await response.json();
-      setTeam(data);
-    } catch (error) {
-      console.error("Error fetching team details:", error);
-    } finally {
+      const data = await fetchTeamDetails(teamId);
+      if (data) setTeam(data);
       setLoading(false);
-    }
-  };
+    };
+
+    getTeamDetails();
+  }, [router, teamId]);
 
   if (!user) {
     return <div className="p-8">Loading...</div>;
@@ -105,15 +109,6 @@ export default function OrganizerTeamDetailsPage({
           <h2 className="text-3xl font-bold tracking-tight">
             {loading ? "Loading Team..." : `Team: ${team?.team_name}`}
           </h2>
-          {!loading && team && (
-            <Button
-              variant="outline"
-              onClick={() => router.push(`/organizer/teams/${params.id}/edit`)}
-            >
-              <Edit className="mr-2 h-4 w-4" />
-              Edit Team
-            </Button>
-          )}
         </div>
 
         {loading ? (

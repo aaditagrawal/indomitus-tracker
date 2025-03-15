@@ -13,7 +13,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { Plus, Edit, Trash } from "lucide-react";
+import { Plus, Trash } from "lucide-react";
 
 interface Organizer {
   id: number;
@@ -132,17 +132,6 @@ export default function OrganizersPage() {
                     <TableCell>{organizer.teamsCount}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={() =>
-                            router.push(
-                              `/admin/organizers/${organizer.id}/edit`,
-                            )
-                          }
-                        >
-                          <Edit className="h-4 w-4" />
-                        </Button>
                         <Button
                           variant="ghost"
                           size="icon"

@@ -4,6 +4,20 @@ import { createClient } from "@libsql/client";
 import { teams, rooms, participants } from "@/db/schema";
 import { eq, count } from "drizzle-orm"; // Import count instead of sql
 
+interface TeamParticipant {
+  name: string;
+  email: string | null;
+  phone: string | null;
+  college: string | null;
+  isLeader: boolean;
+}
+
+interface CreateTeamData {
+  teamName: string;
+  roomId: string;
+  participants: TeamParticipant[];
+}
+
 export async function GET() {
   try {
     const client = createClient({
@@ -53,7 +67,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const data = await request.json();
+    const data: CreateTeamData = await request.json();
     const { teamName, roomId, participants: teamParticipants } = data;
 
     if (
@@ -69,7 +83,9 @@ export async function POST(request: Request) {
     }
 
     // Find team leader
-    const leaderIndex = teamParticipants.findIndex((p) => p.isLeader);
+    const leaderIndex = teamParticipants.findIndex(
+      (p: TeamParticipant) => p.isLeader,
+    );
 
     if (leaderIndex === -1) {
       return NextResponse.json(

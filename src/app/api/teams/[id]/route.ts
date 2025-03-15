@@ -5,13 +5,16 @@ import { createClient } from "@libsql/client";
 import { teams, rooms, participants } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
+type RouteParams = Promise<{ id: string }>;
+
 // GET method to fetch team details
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: RouteParams },
 ) {
   try {
-    const teamId = parseInt(params.id);
+    const { id }: { id: string } = await params;
+    const teamId = parseInt(id);
 
     if (isNaN(teamId)) {
       return NextResponse.json({ error: "Invalid team ID" }, { status: 400 });
@@ -80,10 +83,11 @@ export async function GET(
 // DELETE method to delete a team
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: RouteParams },
 ) {
   try {
-    const teamId = parseInt(params.id);
+    const { id }: { id: string } = await params;
+    const teamId = parseInt(id);
 
     if (isNaN(teamId)) {
       return NextResponse.json({ error: "Invalid team ID" }, { status: 400 });
