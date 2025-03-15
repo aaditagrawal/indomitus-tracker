@@ -4,8 +4,8 @@ FROM oven/bun:1.0.26 as builder
 WORKDIR /app
 
 # Copy package.json and other config files
-COPY package.json bun.lockb ./
-COPY tsconfig.json next.config.js ./
+COPY package.json bun.lock ./
+COPY tsconfig.json next.config.ts ./
 
 # Install dependencies
 RUN bun install
