@@ -2,18 +2,15 @@ import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
 import * as schema from "../db/schema";
 import { users } from "../db/schema";
-import { hashPassword } from "../lib/auth"; // We'll create this next
+import { hashPassword } from "../lib/auth";
 import "dotenv/config";
 
-// Make sure DB_FILE_NAME is set in your .env
-const dbFilePath = process.env.DB_FILE_NAME;
-
-if (!dbFilePath) {
-  console.error("DB_FILE_NAME environment variable is not set");
-  process.exit(1);
-}
+// Use the environment variable or default
+const dbFilePath = process.env.DB_FILE_NAME || "./indomitus.db";
 
 async function initDb() {
+  console.log(`Initializing database at: ${dbFilePath}`);
+
   // Create client and connect to the database
   const client = createClient({
     url: `file:${dbFilePath}`,
@@ -21,7 +18,7 @@ async function initDb() {
 
   const db = drizzle(client, { schema });
 
-  // Hash the password - we'll create this utility function
+  // Hash the password
   const hashedPassword = await hashPassword("superadmin123"); // Use a strong password
 
   try {
