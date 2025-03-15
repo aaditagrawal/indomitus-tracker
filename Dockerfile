@@ -17,6 +17,9 @@ COPY tsconfig.json next.config.ts ./
 # Install dependencies
 RUN bun install
 
+# Install missing dependencies
+RUN bun add react-hook-form @hookform/resolvers zod
+
 # Copy the rest of the application code
 COPY . .
 
@@ -45,7 +48,7 @@ COPY --from=builder /app/next.config.js ./next.config.js
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV DB_FILE_NAME=./indomitus.db
+ENV DB_FILE_NAME=/app/data/indomitus.db
 
 # Create directory for the database if it doesn't exist
 RUN mkdir -p /app/data
