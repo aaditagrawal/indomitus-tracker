@@ -5,7 +5,7 @@ import { users, teamOrganizers } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function DELETE(
-  request: Request,
+  _request: Request,
   { params }: { params: { id: string } },
 ) {
   try {

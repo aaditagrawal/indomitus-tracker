@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { Button } from "@/components/ui/button";
+
 import {
   Card,
   CardContent,
@@ -41,7 +42,7 @@ interface TeamDetails {
 
 export default function AdminTeamDetailsPage() {
   const router = useRouter();
-  const params = useParams(); // Use the useParams hook
+  const params = useParams();
   const teamId = Array.isArray(params.id)
     ? params.id[0]
     : (params.id as string);
@@ -54,8 +55,25 @@ export default function AdminTeamDetailsPage() {
   const [team, setTeam] = useState<TeamDetails | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Define the fetchTeamDetails function wrapped in useCallback
+  const fetchTeamDetails = useCallback(async () => {
+    if (!teamId) return;
+
+    try {
+      setLoading(true);
+      const response = await fetch(`/api/teams/${teamId}`);
+      if (!response.ok) throw new Error("Failed to fetch team details");
+      const data = await response.json();
+      setTeam(data);
+    } catch (error) {
+      console.error("Error fetching team details:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [teamId]);
+
+  // Remove the ESLint disable comment and include all dependencies.
   useEffect(() => {
-    // Only proceed if teamId is available
     if (!teamId) return;
 
     // Check if user is logged in and is admin
@@ -75,23 +93,7 @@ export default function AdminTeamDetailsPage() {
 
     // Fetch team details
     fetchTeamDetails();
-  }, [router, teamId]); // Use teamId in the dependency array
-
-  const fetchTeamDetails = async () => {
-    if (!teamId) return;
-
-    try {
-      setLoading(true);
-      const response = await fetch(`/api/teams/${teamId}`);
-      if (!response.ok) throw new Error("Failed to fetch team details");
-      const data = await response.json();
-      setTeam(data);
-    } catch (error) {
-      console.error("Error fetching team details:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [router, teamId, fetchTeamDetails]);
 
   if (!user) {
     return <div className="p-8">Loading...</div>;
