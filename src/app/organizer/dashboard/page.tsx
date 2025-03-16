@@ -34,7 +34,7 @@ interface Team {
 export default function OrganizerDashboardPage() {
   const router = useRouter();
   const [user, setUser] = useState<{
-    userId: number;
+    id: number;
     email: string;
     role: string;
   } | null>(null);
@@ -61,10 +61,10 @@ export default function OrganizerDashboardPage() {
   useEffect(() => {
     // Fetch assigned teams
     const fetchAssignedTeams = async () => {
-      if (!user || !user.userId) return; // Ensure user is available (set by auth useEffect)
+      if (!user || !user.id) return; // Ensure user is available (set by auth useEffect)
       setLoadingTeams(true);
       try {
-        const response = await fetch(`/api/teams?organizerId=${user.userId}`); // Use organizerId filter
+        const response = await fetch(`/api/teams?organizerId=${user.id}`); // Use organizerId filter
         if (!response.ok) {
           throw new Error("Failed to fetch assigned teams");
         }
