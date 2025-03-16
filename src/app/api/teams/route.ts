@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
-import { teams, rooms, participants } from "@/db/schema";
+import { teams, rooms, participants, teamOrganizers } from "@/db/schema";
 import { eq, count } from "drizzle-orm"; // Import count instead of sql
 
 interface TeamParticipant {
@@ -20,25 +20,45 @@ interface CreateTeamData {
   participants: TeamParticipant[];
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const organizerId = searchParams.get("organizerId");
+
     const client = createClient({
       url: `file:${process.env.DB_FILE_NAME || "./indomitus.db"}`,
     });
 
     const db = drizzle(client);
 
-    // Join with rooms to get room_name
-    const teamsData = await db
-      .select({
-        team_id: teams.team_id,
-        team_name: teams.team_name,
-        room_id: teams.room_id,
-        room_name: rooms.room_name,
-        team_leader_id: teams.team_leader_id,
-      })
-      .from(teams)
-      .leftJoin(rooms, eq(teams.room_id, rooms.room_id));
+    let teamsData;
+    if (organizerId) {
+      // If filtering by organizerId, join the teamOrganizers table
+      teamsData = await db
+        .select({
+          team_id: teams.team_id,
+          team_name: teams.team_name,
+          room_id: teams.room_id,
+          room_name: rooms.room_name,
+          team_leader_id: teams.team_leader_id,
+        })
+        .from(teams)
+        .innerJoin(teamOrganizers, eq(teamOrganizers.team_id, teams.team_id))
+        .leftJoin(rooms, eq(teams.room_id, rooms.room_id))
+        .where(eq(teamOrganizers.organizer_id, parseInt(organizerId)));
+    } else {
+      // Otherwise, return all teams
+      teamsData = await db
+        .select({
+          team_id: teams.team_id,
+          team_name: teams.team_name,
+          room_id: teams.room_id,
+          room_name: rooms.room_name,
+          team_leader_id: teams.team_leader_id,
+        })
+        .from(teams)
+        .leftJoin(rooms, eq(teams.room_id, rooms.room_id));
+    }
 
     // Get participant count for each team
     const teamsWithParticipantCount = await Promise.all(
