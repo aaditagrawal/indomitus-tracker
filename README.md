@@ -48,7 +48,7 @@ A web application built with Next.js, Drizzle ORM, and Turso for managing teams,
 2.  **Install dependencies:**
 
     ```bash
-    npm install  # or yarn install
+    bun install  # or yarn install
     ```
 
 3.  **Set up your environment variables:**

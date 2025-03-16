@@ -1,12 +1,12 @@
-// src/app/api/teams/[id]/route.ts
 import { NextResponse } from "next/server";
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
-import { teams, rooms, participants } from "@/db/schema";
+import { teams, rooms, participants, teamOrganizers, users } from "@/db/schema"; // Import teamOrganizers and users
 import { eq } from "drizzle-orm";
 
 type RouteParams = Promise<{ id: string }>;
 
+// GET method to fetch team details
 // GET method to fetch team details
 export async function GET(
   request: Request,
@@ -56,16 +56,27 @@ export async function GET(
       .from(participants)
       .where(eq(participants.team_id, teamId));
 
+    // **Fetch assigned organizers for the team:**
+    const assignedOrganizers = await db
+      .select({
+        id: users.id,
+        email: users.email,
+      })
+      .from(teamOrganizers)
+      .innerJoin(users, eq(teamOrganizers.organizer_id, users.id))
+      .where(eq(teamOrganizers.team_id, teamId));
+
     // Mark the team leader
     const participantsWithLeader = teamParticipants.map((participant) => ({
       ...participant,
       is_leader: participant.participant_id === teamData[0].team_leader_id,
     }));
 
-    // Combine team and participants data
+    // Combine team and participants data, INCLUDE assignedOrganizers in the result
     const result = {
       ...teamData[0],
       participants: participantsWithLeader,
+      assignedOrganizers: assignedOrganizers, // Include the fetched assigned organizers here!
     };
 
     await client.close();

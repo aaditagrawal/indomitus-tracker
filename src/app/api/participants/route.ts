@@ -8,6 +8,8 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const searchQuery = searchParams.get("query") || "";
+    // IMPORTANT: Remove any organizerId filtering here.
+    // The participant API should always return ALL participants.
 
     const client = createClient({
       url: `file:${process.env.DB_FILE_NAME || "./indomitus.db"}`,

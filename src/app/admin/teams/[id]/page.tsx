@@ -20,6 +20,9 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { ArrowLeft } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Participant {
   participant_id: number;
@@ -37,6 +40,13 @@ interface TeamDetails {
   room_name: string;
   team_leader_id: number | null;
   participants: Participant[];
+  assignedOrganizers: Organizer[];
+}
+
+interface Organizer {
+  id: number;
+  email: string;
+  role?: string;
 }
 
 export default function AdminTeamDetailsPage() {
@@ -51,17 +61,23 @@ export default function AdminTeamDetailsPage() {
   } | null>(null);
   const [team, setTeam] = useState<TeamDetails | null>(null);
   const [loading, setLoading] = useState(true);
+  const [allOrganizers, setAllOrganizers] = useState<Organizer[]>([]);
+  const [assignedOrganizers, setAssignedOrganizers] = useState<Organizer[]>([]);
+  const [availableOrganizers, setAvailableOrganizers] = useState<Organizer[]>(
+    [],
+  );
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Define the fetchTeamDetails function wrapped in useCallback
+  // Fetch team details from the API
   const fetchTeamDetails = useCallback(async () => {
     if (!teamId) return;
-
     try {
       setLoading(true);
       const response = await fetch(`/api/teams/${teamId}`);
       if (!response.ok) throw new Error("Failed to fetch team details");
-      const data = await response.json();
+      const data: TeamDetails = await response.json();
       setTeam(data);
+      setAssignedOrganizers(data.assignedOrganizers || []);
     } catch (error) {
       console.error("Error fetching team details:", error);
     } finally {
@@ -69,28 +85,86 @@ export default function AdminTeamDetailsPage() {
     }
   }, [teamId]);
 
-  // Remove the ESLint disable comment and include all dependencies.
+  // Fetch all organizers and filter for ORGANIZER role
+  const fetchAllOrganizers = useCallback(async () => {
+    try {
+      const response = await fetch("/api/organizers");
+      if (!response.ok) throw new Error("Failed to fetch organizers");
+      const data: Organizer[] = await response.json();
+      const organizerList = data.filter(
+        (org: Organizer) => org.role === "ORGANIZER",
+      );
+      setAllOrganizers(organizerList);
+    } catch (error) {
+      console.error("Error fetching organizers:", error);
+    }
+  }, []);
+
+  // Automatically update available organizers when assignedOrganizers or allOrganizers changes.
+  useEffect(() => {
+    if (allOrganizers.length) {
+      const assignedIds = assignedOrganizers.map((org) => org.id);
+      const available = allOrganizers.filter(
+        (organizer) => !assignedIds.includes(organizer.id),
+      );
+      setAvailableOrganizers(available);
+    }
+  }, [assignedOrganizers, allOrganizers]);
+
   useEffect(() => {
     if (!teamId) return;
-
-    // Check if user is logged in and is admin
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
       router.push("/login");
       return;
     }
-
     const parsedUser = JSON.parse(storedUser);
     if (parsedUser.role !== "ADMIN" && parsedUser.role !== "SUPERADMIN") {
       router.push("/login");
       return;
     }
-
     setUser(parsedUser);
+    Promise.all([fetchAllOrganizers(), fetchTeamDetails()]);
+  }, [router, teamId, fetchTeamDetails, fetchAllOrganizers]);
 
-    // Fetch team details
-    fetchTeamDetails();
-  }, [router, teamId, fetchTeamDetails]);
+  const assignOrganizer = (organizer: Organizer) => {
+    setAssignedOrganizers((prev) => [...prev, organizer]);
+  };
+
+  const unassignOrganizer = (organizer: Organizer) => {
+    setAssignedOrganizers((prev) =>
+      prev.filter((org) => org.id !== organizer.id),
+    );
+  };
+
+  const updateTeamOrganizers = async () => {
+    if (!teamId) return;
+    try {
+      setLoading(true);
+      const organizerIdsToAssign = assignedOrganizers.map((org) => org.id);
+      const response = await fetch(`/api/teams/${teamId}/organizers`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ organizerIds: organizerIdsToAssign }),
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to update team organizers");
+      }
+      // Refetch team details to ensure consistency
+      fetchTeamDetails();
+    } catch (error) {
+      console.error("Error updating team organizers:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredAvailableOrganizers = availableOrganizers.filter((organizer) =>
+    organizer.email.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   if (!user) {
     return <div className="p-8">Loading...</div>;
@@ -161,6 +235,89 @@ export default function AdminTeamDetailsPage() {
                     <dd className="text-lg">{team.participants.length}</dd>
                   </div>
                 </dl>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Manage Organizers</CardTitle>
+                <CardDescription>
+                  Assign organizers to manage this team.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="organizer-search">Search Organizers</Label>
+                  <Input
+                    type="text"
+                    id="organizer-search"
+                    placeholder="Search by email..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Available Organizers List */}
+                  <div className="space-y-2">
+                    <CardTitle>Available Organizers</CardTitle>
+                    <CardDescription>
+                      Organizers you can assign to the team.
+                    </CardDescription>
+                    <ScrollArea className="h-[200px] rounded-md border p-2">
+                      <div className="space-y-1">
+                        {filteredAvailableOrganizers.length > 0 ? (
+                          filteredAvailableOrganizers.map((organizer) => (
+                            <Button
+                              key={organizer.id}
+                              variant="ghost"
+                              className="w-full justify-start rounded-md hover:bg-accent hover:text-accent-foreground"
+                              onClick={() => assignOrganizer(organizer)}
+                            >
+                              {organizer.email}
+                            </Button>
+                          ))
+                        ) : (
+                          <div className="text-sm text-muted-foreground text-center">
+                            No organizers available.
+                          </div>
+                        )}
+                      </div>
+                    </ScrollArea>
+                  </div>
+
+                  {/* Assigned Organizers List */}
+                  <div className="space-y-2">
+                    <CardTitle>Assigned Organizers</CardTitle>
+                    <CardDescription>
+                      Organizers currently assigned to this team.
+                    </CardDescription>
+                    <ScrollArea className="h-[200px] rounded-md border p-2">
+                      <div className="space-y-1">
+                        {assignedOrganizers.length > 0 ? (
+                          assignedOrganizers.map((organizer) => (
+                            <Button
+                              key={organizer.id}
+                              variant="ghost"
+                              className="w-full justify-start rounded-md hover:bg-accent hover:text-accent-foreground"
+                              onClick={() => unassignOrganizer(organizer)}
+                            >
+                              {organizer.email}
+                            </Button>
+                          ))
+                        ) : (
+                          <div className="text-sm text-muted-foreground text-center">
+                            No organizers assigned.
+                          </div>
+                        )}
+                      </div>
+                    </ScrollArea>
+                  </div>
+                </div>
+
+                <Button onClick={updateTeamOrganizers} disabled={loading}>
+                  {loading ? "Updating..." : "Update Organizers"}
+                </Button>
               </CardContent>
             </Card>
 
