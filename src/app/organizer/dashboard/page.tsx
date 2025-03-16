@@ -41,8 +41,8 @@ export default function OrganizerDashboardPage() {
   const [assignedTeams, setAssignedTeams] = useState<Team[]>([]);
   const [loadingTeams, setLoadingTeams] = useState(true);
 
+  // **Authentication/Authorization Check - Separate useEffect**
   useEffect(() => {
-    // Check if user is logged in and is organizer
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
       router.push("/login");
@@ -54,15 +54,17 @@ export default function OrganizerDashboardPage() {
       router.push("/login");
       return;
     }
-
     setUser(parsedUser);
+  }, [router]); // Dependency array is now [router] - for auth check
 
+  // **Data Fetching - Separate useEffect with empty dependency array**
+  useEffect(() => {
     // Fetch assigned teams
     const fetchAssignedTeams = async () => {
-      if (!parsedUser || !parsedUser.id) return; // Ensure parsedUser and parsedUser.id are available
+      if (!user || !user.userId) return; // Ensure user is available (set by auth useEffect)
       setLoadingTeams(true);
       try {
-        const response = await fetch(`/api/teams?organizerId=${parsedUser.id}`); // Use organizerId filter
+        const response = await fetch(`/api/teams?organizerId=${user.userId}`); // Use organizerId filter
         if (!response.ok) {
           throw new Error("Failed to fetch assigned teams");
         }
@@ -77,7 +79,7 @@ export default function OrganizerDashboardPage() {
     };
 
     fetchAssignedTeams();
-  }, [router]);
+  }, [user]); // Dependency array is now [] - for data fetching
 
   if (!user) {
     return <div className="p-8">Loading...</div>;
