@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
+import { useState, ReactNode } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
 import {
   LayoutDashboard,
   Users,
@@ -9,6 +8,8 @@ import {
   LogOut,
   Home,
   User,
+  Menu,
+  X as XIcon,
 } from "lucide-react";
 
 interface DashboardLayoutProps {
@@ -23,6 +24,7 @@ export function DashboardLayout({
   userName,
 }: DashboardLayoutProps) {
   const isAdmin = userRole === "ADMIN" || userRole === "SUPERADMIN";
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -31,8 +33,8 @@ export function DashboardLayout({
 
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
-      <div className="w-64 bg-sidebar border-r border-sidebar-border p-4">
+      {/* Desktop Sidebar */}
+      <div className="hidden md:block w-64 bg-sidebar border-r border-sidebar-border p-4">
         <div className="flex items-center gap-2 mb-8 px-2">
           <div className="h-8 w-8 rounded-full bg-sidebar-primary flex items-center justify-center text-white font-bold">
             I
@@ -94,6 +96,102 @@ export function DashboardLayout({
           </Button>
         </nav>
       </div>
+
+      {/* Mobile Hamburger Button (visible only on mobile) */}
+      <div className="fixed top-4 left-4 md:hidden z-50">
+        <Button onClick={() => setMobileNavOpen(true)}>
+          <Menu className="h-6 w-6" />
+        </Button>
+      </div>
+
+      {/* Mobile Sidebar Overlay */}
+      {mobileNavOpen && (
+        <div className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden">
+          <div className="w-64 bg-sidebar h-full p-4">
+            <div className="flex items-center justify-between mb-8">
+              <h1 className="text-xl font-bold text-sidebar-foreground">
+                Indomitus
+              </h1>
+              <Button variant="ghost" onClick={() => setMobileNavOpen(false)}>
+                <XIcon className="h-6 w-6" />
+              </Button>
+            </div>
+            <nav className="space-y-2">
+              <Link
+                href={isAdmin ? "/admin/dashboard" : "/organizer/dashboard"}
+              >
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start"
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  <LayoutDashboard className="mr-2 h-5 w-5" />
+                  Dashboard
+                </Button>
+              </Link>
+              <Link href={isAdmin ? "/admin/teams" : "/organizer/teams"}>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start"
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  <Users className="mr-2 h-5 w-5" />
+                  Teams
+                </Button>
+              </Link>
+              <Link
+                href={
+                  isAdmin ? "/admin/participants" : "/organizer/participants"
+                }
+              >
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start"
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  <User className="mr-2 h-5 w-5" />
+                  Participants
+                </Button>
+              </Link>
+              {isAdmin && (
+                <Link href="/admin/organizers">
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start"
+                    onClick={() => setMobileNavOpen(false)}
+                  >
+                    <UserPlus className="mr-2 h-5 w-5" />
+                    Organizers
+                  </Button>
+                </Link>
+              )}
+              {isAdmin && (
+                <Link href="/admin/rooms">
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start"
+                    onClick={() => setMobileNavOpen(false)}
+                  >
+                    <Home className="mr-2 h-5 w-5" />
+                    Rooms
+                  </Button>
+                </Link>
+              )}
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-destructive hover:text-destructive"
+                onClick={() => {
+                  setMobileNavOpen(false);
+                  handleLogout();
+                }}
+              >
+                <LogOut className="mr-2 h-5 w-5" />
+                Logout
+              </Button>
+            </nav>
+          </div>
+        </div>
+      )}
 
       {/* Main content */}
       <div className="flex-1 overflow-auto">
