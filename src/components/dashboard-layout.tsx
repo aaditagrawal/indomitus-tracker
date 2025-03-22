@@ -1,4 +1,4 @@
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +10,8 @@ import {
   User,
   Menu,
   X as XIcon,
+  Sun, // Added Sun icon
+  Moon, // Added Moon icon
 } from "lucide-react";
 
 interface DashboardLayoutProps {
@@ -25,6 +27,29 @@ export function DashboardLayout({
 }: DashboardLayoutProps) {
   const isAdmin = userRole === "ADMIN" || userRole === "SUPERADMIN";
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false); // Changed to boolean
+
+  useEffect(() => {
+    // Check local storage for existing theme
+    const storedTheme = localStorage.getItem("theme");
+    const initialTheme = storedTheme === "dark"; //convert string to boolean
+    setDarkMode(initialTheme);
+  }, []);
+
+  useEffect(() => {
+    // Apply dark mode class to the HTML element
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode); // Toggle the boolean
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -85,6 +110,23 @@ export function DashboardLayout({
               </Button>
             </Link>
           )}
+          <Button
+            variant="ghost"
+            className="w-full justify-start"
+            onClick={toggleDarkMode}
+          >
+            {darkMode ? (
+              <>
+                <Sun className="mr-2 h-5 w-5" />
+                Light Mode
+              </>
+            ) : (
+              <>
+                <Moon className="mr-2 h-5 w-5" />
+                Dark Mode
+              </>
+            )}
+          </Button>
 
           <Button
             variant="ghost"
@@ -97,14 +139,12 @@ export function DashboardLayout({
         </nav>
       </div>
 
-      {/* Mobile Hamburger Button (visible only on mobile) */}
       <div className="fixed top-4 left-4 md:hidden z-50">
         <Button onClick={() => setMobileNavOpen(true)}>
           <Menu className="h-6 w-6" />
         </Button>
       </div>
 
-      {/* Mobile Sidebar Overlay */}
       {mobileNavOpen && (
         <div className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden">
           <div className="w-64 bg-sidebar h-full p-4">
@@ -179,6 +219,23 @@ export function DashboardLayout({
               )}
               <Button
                 variant="ghost"
+                className="w-full justify-start"
+                onClick={toggleDarkMode}
+              >
+                {darkMode ? (
+                  <>
+                    <Sun className="mr-2 h-5 w-5" />
+                    Light Mode
+                  </>
+                ) : (
+                  <>
+                    <Moon className="mr-2 h-5 w-5" />
+                    Dark Mode
+                  </>
+                )}
+              </Button>
+              <Button
+                variant="ghost"
                 className="w-full justify-start text-destructive hover:text-destructive"
                 onClick={() => {
                   setMobileNavOpen(false);
@@ -210,7 +267,6 @@ export function DashboardLayout({
           </div>
         </header>
 
-        {/* Page content */}
         <main className="p-6">{children}</main>
       </div>
     </div>
