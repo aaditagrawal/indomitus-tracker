@@ -34,6 +34,7 @@ afterAll(async () => {
   await rm(directory, { recursive: true, force: true });
 });
 
+/** Request the real teams route against the temporary fixture database. */
 async function getTeams(query = "") {
   const response = await GET(new Request(`http://localhost/api/teams${query}`));
   expect(response.status).toBe(200);

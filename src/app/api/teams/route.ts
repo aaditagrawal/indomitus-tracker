@@ -20,6 +20,7 @@ interface CreateTeamData {
   participants: TeamParticipant[];
 }
 
+/** Return teams with room details and participant totals, optionally filtered by organizer. */
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
