@@ -60,20 +60,20 @@ export async function GET(request: Request) {
         .leftJoin(rooms, eq(teams.room_id, rooms.room_id));
     }
 
-    // Get participant count for each team
-    const teamsWithParticipantCount = await Promise.all(
-      teamsData.map(async (team) => {
-        const participantCount = await db
-          .select({ count: count() }) // Use count() function instead of sql``
+    // Scan participants once instead of issuing one count query per team.
+    const participantCounts = teamsData.length === 0
+      ? []
+      : await db
+          .select({ team_id: participants.team_id, count: count() })
           .from(participants)
-          .where(eq(participants.team_id, team.team_id));
-
-        return {
-          ...team,
-          participant_count: participantCount[0].count,
-        };
-      }),
+          .groupBy(participants.team_id);
+    const countsByTeam = new Map(
+      participantCounts.map((row) => [row.team_id, row.count]),
     );
+    const teamsWithParticipantCount = teamsData.map((team) => ({
+      ...team,
+      participant_count: countsByTeam.get(team.team_id) ?? 0,
+    }));
 
     await client.close();
 
