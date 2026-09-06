@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, UserCheck } from "lucide-react";
@@ -33,34 +36,48 @@ export function DashboardStats() {
   }, []);
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className={styleClass("componentsDashboardStatsStyle1")}>
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle className="text-sm font-medium">Total Teams</CardTitle>
-          <Users className="h-4 w-4 text-muted-foreground" />
+        <CardHeader
+          xstyle={styles.componentsDashboardStatsStyle2}
+          className="sx-componentsDashboardStatsStyle2"
+        >
+          <CardTitle
+            xstyle={styles.componentsDashboardStatsStyle3}
+            className="sx-componentsDashboardStatsStyle3 ui-text-defined"
+          >
+            Total Teams
+          </CardTitle>
+          <Users className={styleClass("componentsDashboardStatsStyle4")} />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
+          <div className={styleClass("componentsDashboardStatsStyle5")}>
             {stats.loading ? "Loading..." : stats.totalTeams}
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className={styleClass("componentsDashboardStatsStyle6")}>
             Registered teams in the system
           </p>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle className="text-sm font-medium">
+        <CardHeader
+          xstyle={styles.componentsDashboardStatsStyle2}
+          className="sx-componentsDashboardStatsStyle2"
+        >
+          <CardTitle
+            xstyle={styles.componentsDashboardStatsStyle3}
+            className="sx-componentsDashboardStatsStyle3 ui-text-defined"
+          >
             Total Participants
           </CardTitle>
-          <UserCheck className="h-4 w-4 text-muted-foreground" />
+          <UserCheck className={styleClass("componentsDashboardStatsStyle4")} />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">
+          <div className={styleClass("componentsDashboardStatsStyle5")}>
             {stats.loading ? "Loading..." : stats.totalParticipants}
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className={styleClass("componentsDashboardStatsStyle6")}>
             Registered participants across all teams
           </p>
         </CardContent>

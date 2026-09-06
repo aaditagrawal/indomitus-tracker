@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
@@ -153,7 +156,11 @@ export default function RoomsPage() {
   };
 
   if (!user) {
-    return <div className="p-8">Loading...</div>;
+    return (
+      <div className={styleClass("appAdminDashboardPageStyle1")}>
+        Loading...
+      </div>
+    );
   }
 
   return (
@@ -161,34 +168,47 @@ export default function RoomsPage() {
       userRole={user.role as "ADMIN" | "SUPERADMIN"}
       userName={user.email.split("@")[0]}
     >
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold tracking-tight">Rooms</h2>
+      <div className={styleClass("appAdminDashboardPageStyle2")}>
+        <div className={styleClass("appAdminDashboardPageStyle3")}>
+          <h2 className={styleClass("appAdminDashboardPageStyle4")}>Rooms</h2>
           <Button onClick={openAddDialog}>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className={styleClass("appAdminDashboardPageStyle6")} />
             Add Room
           </Button>
         </div>
 
-        <div className="rounded-md border">
+        <div className={styleClass("appAdminDashboardPageStyle8")}>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Room ID</TableHead>
                 <TableHead>Room Name</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead
+                  xstyle={styles.appAdminDashboardPageStyle9}
+                  className="sx-appAdminDashboardPageStyle9 ui-text-defined"
+                >
+                  Actions
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={3} className="text-center py-6">
+                  <TableCell
+                    colSpan={3}
+                    xstyle={styles.appAdminDashboardPageStyle10}
+                    className="sx-appAdminDashboardPageStyle10 ui-text-defined"
+                  >
                     Loading rooms...
                   </TableCell>
                 </TableRow>
               ) : rooms.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={3} className="text-center py-6">
+                  <TableCell
+                    colSpan={3}
+                    xstyle={styles.appAdminDashboardPageStyle10}
+                    className="sx-appAdminDashboardPageStyle10 ui-text-defined"
+                  >
                     No rooms found. Add your first room.
                   </TableCell>
                 </TableRow>
@@ -196,24 +216,40 @@ export default function RoomsPage() {
                 rooms.map((room) => (
                   <TableRow key={room.room_id}>
                     <TableCell>{room.room_id}</TableCell>
-                    <TableCell className="font-medium">
+                    <TableCell
+                      xstyle={styles.appAdminDashboardPageStyle12}
+                      className="sx-appAdminDashboardPageStyle12"
+                    >
                       {room.room_name}
                     </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex justify-end gap-2">
+                    <TableCell
+                      xstyle={styles.appAdminDashboardPageStyle9}
+                      className="sx-appAdminDashboardPageStyle9 ui-text-defined"
+                    >
+                      <div
+                        className={styleClass("appAdminDashboardPageStyle16")}
+                      >
                         <Button
                           variant="ghost"
                           size="icon"
                           onClick={() => openEditDialog(room)}
                         >
-                          <Edit className="h-4 w-4" />
+                          <Edit
+                            className={styleClass(
+                              "appAdminDashboardPageStyle17",
+                            )}
+                          />
                         </Button>
                         <Button
                           variant="ghost"
                           size="icon"
                           onClick={() => handleDeleteRoom(room.room_id)}
                         >
-                          <Trash className="h-4 w-4" />
+                          <Trash
+                            className={styleClass(
+                              "appAdminDashboardPageStyle17",
+                            )}
+                          />
                         </Button>
                       </div>
                     </TableCell>
@@ -236,8 +272,8 @@ export default function RoomsPage() {
                   : "Enter the name for the new room."}
               </DialogDescription>
             </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid gap-2">
+            <div className={styleClass("appAdminRoomsPageStyle15")}>
+              <div className={styleClass("appAdminRoomsPageStyle16")}>
                 <Label htmlFor="roomName">Room Name</Label>
                 <Input
                   id="roomName"

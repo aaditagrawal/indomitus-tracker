@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
@@ -83,7 +86,11 @@ export default function OrganizersPage() {
   };
 
   if (!user) {
-    return <div className="p-8">Loading...</div>;
+    return (
+      <div className={styleClass("appAdminDashboardPageStyle1")}>
+        Loading...
+      </div>
+    );
   }
 
   return (
@@ -91,35 +98,50 @@ export default function OrganizersPage() {
       userRole={user.role as "ADMIN" | "SUPERADMIN"}
       userName={user.email.split("@")[0]}
     >
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold tracking-tight">Organizers</h2>
+      <div className={styleClass("appAdminDashboardPageStyle2")}>
+        <div className={styleClass("appAdminDashboardPageStyle3")}>
+          <h2 className={styleClass("appAdminDashboardPageStyle4")}>
+            Organizers
+          </h2>
           <Button onClick={() => router.push("/admin/organizers/add")}>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className={styleClass("appAdminDashboardPageStyle6")} />
             Add Organizer
           </Button>
         </div>
 
-        <div className="rounded-md border">
+        <div className={styleClass("appAdminDashboardPageStyle8")}>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Email</TableHead>
                 <TableHead>Role</TableHead>
                 <TableHead>Teams Assigned</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead
+                  xstyle={styles.appAdminDashboardPageStyle9}
+                  className="sx-appAdminDashboardPageStyle9 ui-text-defined"
+                >
+                  Actions
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={4} className="text-center py-6">
+                  <TableCell
+                    colSpan={4}
+                    xstyle={styles.appAdminDashboardPageStyle10}
+                    className="sx-appAdminDashboardPageStyle10 ui-text-defined"
+                  >
                     Loading organizers...
                   </TableCell>
                 </TableRow>
               ) : organizers.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={4} className="text-center py-6">
+                  <TableCell
+                    colSpan={4}
+                    xstyle={styles.appAdminDashboardPageStyle10}
+                    className="sx-appAdminDashboardPageStyle10 ui-text-defined"
+                  >
                     No organizers found. Add your first organizer.
                   </TableCell>
                 </TableRow>
@@ -130,28 +152,49 @@ export default function OrganizersPage() {
                     <TableCell>
                       {/* Display different badges based on role */}
                       {organizer.role === "SUPERADMIN" ? (
-                        <span className="inline-flex items-center rounded-full bg-purple-100 px-2 py-1 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                        <span
+                          className={styleClass(
+                            "appAdminOrganizersPageStyle10",
+                          )}
+                        >
                           SUPERADMIN
                         </span>
                       ) : organizer.role === "ADMIN" ? (
-                        <span className="inline-flex items-center rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                        <span
+                          className={styleClass(
+                            "appAdminOrganizersPageStyle11",
+                          )}
+                        >
                           ADMIN
                         </span>
                       ) : (
-                        <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                        <span
+                          className={styleClass(
+                            "appAdminOrganizersPageStyle12",
+                          )}
+                        >
                           ORGANIZER
                         </span>
                       )}
                     </TableCell>
                     <TableCell>{organizer.teamsCount}</TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex justify-end gap-2">
+                    <TableCell
+                      xstyle={styles.appAdminDashboardPageStyle9}
+                      className="sx-appAdminDashboardPageStyle9 ui-text-defined"
+                    >
+                      <div
+                        className={styleClass("appAdminDashboardPageStyle16")}
+                      >
                         <Button
                           variant="ghost"
                           size="icon"
                           onClick={() => handleDeleteOrganizer(organizer.id)}
                         >
-                          <Trash className="h-4 w-4" />
+                          <Trash
+                            className={styleClass(
+                              "appAdminDashboardPageStyle17",
+                            )}
+                          />
                         </Button>
                       </div>
                     </TableCell>

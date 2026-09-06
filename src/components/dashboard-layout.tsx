@@ -1,3 +1,5 @@
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
 import { useState, ReactNode, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -57,29 +59,39 @@ export function DashboardLayout({
   };
 
   return (
-    <div className="flex h-screen">
+    <div className={styleClass("componentsDashboardLayoutStyle1")}>
       {/* Desktop Sidebar */}
-      <div className="hidden md:block w-64 bg-sidebar border-r border-sidebar-border p-4">
-        <div className="flex items-center gap-2 mb-8 px-2">
-          <div className="h-8 w-8 rounded-full bg-sidebar-primary flex items-center justify-center text-white font-bold">
-            I
-          </div>
-          <h1 className="text-xl font-bold text-sidebar-foreground">
+      <div className={styleClass("componentsDashboardLayoutStyle2")}>
+        <div className={styleClass("componentsDashboardLayoutStyle3")}>
+          <div className={styleClass("componentsDashboardLayoutStyle4")}>I</div>
+          <h1 className={styleClass("componentsDashboardLayoutStyle5")}>
             Indomitus
           </h1>
         </div>
 
-        <nav className="space-y-2">
+        <nav className={styleClass("appAdminTeamsIdPageStyle25")}>
           <Link href={isAdmin ? "/admin/dashboard" : "/organizer/dashboard"}>
-            <Button variant="ghost" className="w-full justify-start">
-              <LayoutDashboard className="mr-2 h-5 w-5" />
+            <Button
+              variant="ghost"
+              xstyle={styles.componentsDashboardLayoutStyle7}
+              className="sx-componentsDashboardLayoutStyle7"
+            >
+              <LayoutDashboard
+                className={styleClass("componentsDashboardLayoutStyle8")}
+              />
               Dashboard
             </Button>
           </Link>
 
           <Link href={isAdmin ? "/admin/teams" : "/organizer/teams"}>
-            <Button variant="ghost" className="w-full justify-start">
-              <Users className="mr-2 h-5 w-5" />
+            <Button
+              variant="ghost"
+              xstyle={styles.componentsDashboardLayoutStyle7}
+              className="sx-componentsDashboardLayoutStyle7"
+            >
+              <Users
+                className={styleClass("componentsDashboardLayoutStyle8")}
+              />
               Teams
             </Button>
           </Link>
@@ -87,16 +99,26 @@ export function DashboardLayout({
           <Link
             href={isAdmin ? "/admin/participants" : "/organizer/participants"}
           >
-            <Button variant="ghost" className="w-full justify-start">
-              <User className="mr-2 h-5 w-5" />
+            <Button
+              variant="ghost"
+              xstyle={styles.componentsDashboardLayoutStyle7}
+              className="sx-componentsDashboardLayoutStyle7"
+            >
+              <User className={styleClass("componentsDashboardLayoutStyle8")} />
               Participants
             </Button>
           </Link>
 
           {isAdmin && (
             <Link href="/admin/organizers">
-              <Button variant="ghost" className="w-full justify-start">
-                <UserPlus className="mr-2 h-5 w-5" />
+              <Button
+                variant="ghost"
+                xstyle={styles.componentsDashboardLayoutStyle7}
+                className="sx-componentsDashboardLayoutStyle7"
+              >
+                <UserPlus
+                  className={styleClass("componentsDashboardLayoutStyle8")}
+                />
                 Organizers
               </Button>
             </Link>
@@ -104,25 +126,36 @@ export function DashboardLayout({
 
           {isAdmin && (
             <Link href="/admin/rooms">
-              <Button variant="ghost" className="w-full justify-start">
-                <Home className="mr-2 h-5 w-5" />
+              <Button
+                variant="ghost"
+                xstyle={styles.componentsDashboardLayoutStyle7}
+                className="sx-componentsDashboardLayoutStyle7"
+              >
+                <Home
+                  className={styleClass("componentsDashboardLayoutStyle8")}
+                />
                 Rooms
               </Button>
             </Link>
           )}
           <Button
             variant="ghost"
-            className="w-full justify-start"
+            xstyle={styles.componentsDashboardLayoutStyle7}
+            className="sx-componentsDashboardLayoutStyle7"
             onClick={toggleDarkMode}
           >
             {darkMode ? (
               <>
-                <Sun className="mr-2 h-5 w-5" />
+                <Sun
+                  className={styleClass("componentsDashboardLayoutStyle8")}
+                />
                 Light Mode
               </>
             ) : (
               <>
-                <Moon className="mr-2 h-5 w-5" />
+                <Moon
+                  className={styleClass("componentsDashboardLayoutStyle8")}
+                />
                 Dark Mode
               </>
             )}
@@ -130,52 +163,61 @@ export function DashboardLayout({
 
           <Button
             variant="ghost"
-            className="w-full justify-start text-destructive hover:text-destructive"
+            xstyle={styles.componentsDashboardLayoutStyle20}
+            className="sx-componentsDashboardLayoutStyle20 ui-text-defined"
             onClick={handleLogout}
           >
-            <LogOut className="mr-2 h-5 w-5" />
+            <LogOut className={styleClass("componentsDashboardLayoutStyle8")} />
             Logout
           </Button>
         </nav>
       </div>
 
-      <div className="fixed top-4 left-4 md:hidden z-50">
+      <div className={styleClass("componentsDashboardLayoutStyle22")}>
         <Button onClick={() => setMobileNavOpen(true)}>
-          <Menu className="h-6 w-6" />
+          <Menu className={styleClass("componentsDashboardLayoutStyle23")} />
         </Button>
       </div>
 
       {mobileNavOpen && (
-        <div className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden">
-          <div className="w-64 bg-sidebar h-full p-4">
-            <div className="flex items-center justify-between mb-8">
-              <h1 className="text-xl font-bold text-sidebar-foreground">
+        <div className={styleClass("componentsDashboardLayoutStyle24")}>
+          <div className={styleClass("componentsDashboardLayoutStyle25")}>
+            <div className={styleClass("componentsDashboardLayoutStyle26")}>
+              <h1 className={styleClass("componentsDashboardLayoutStyle5")}>
                 Indomitus
               </h1>
               <Button variant="ghost" onClick={() => setMobileNavOpen(false)}>
-                <XIcon className="h-6 w-6" />
+                <XIcon
+                  className={styleClass("componentsDashboardLayoutStyle23")}
+                />
               </Button>
             </div>
-            <nav className="space-y-2">
+            <nav className={styleClass("appAdminTeamsIdPageStyle25")}>
               <Link
                 href={isAdmin ? "/admin/dashboard" : "/organizer/dashboard"}
               >
                 <Button
                   variant="ghost"
-                  className="w-full justify-start"
+                  xstyle={styles.componentsDashboardLayoutStyle7}
+                  className="sx-componentsDashboardLayoutStyle7"
                   onClick={() => setMobileNavOpen(false)}
                 >
-                  <LayoutDashboard className="mr-2 h-5 w-5" />
+                  <LayoutDashboard
+                    className={styleClass("componentsDashboardLayoutStyle8")}
+                  />
                   Dashboard
                 </Button>
               </Link>
               <Link href={isAdmin ? "/admin/teams" : "/organizer/teams"}>
                 <Button
                   variant="ghost"
-                  className="w-full justify-start"
+                  xstyle={styles.componentsDashboardLayoutStyle7}
+                  className="sx-componentsDashboardLayoutStyle7"
                   onClick={() => setMobileNavOpen(false)}
                 >
-                  <Users className="mr-2 h-5 w-5" />
+                  <Users
+                    className={styleClass("componentsDashboardLayoutStyle8")}
+                  />
                   Teams
                 </Button>
               </Link>
@@ -186,10 +228,13 @@ export function DashboardLayout({
               >
                 <Button
                   variant="ghost"
-                  className="w-full justify-start"
+                  xstyle={styles.componentsDashboardLayoutStyle7}
+                  className="sx-componentsDashboardLayoutStyle7"
                   onClick={() => setMobileNavOpen(false)}
                 >
-                  <User className="mr-2 h-5 w-5" />
+                  <User
+                    className={styleClass("componentsDashboardLayoutStyle8")}
+                  />
                   Participants
                 </Button>
               </Link>
@@ -197,10 +242,13 @@ export function DashboardLayout({
                 <Link href="/admin/organizers">
                   <Button
                     variant="ghost"
-                    className="w-full justify-start"
+                    xstyle={styles.componentsDashboardLayoutStyle7}
+                    className="sx-componentsDashboardLayoutStyle7"
                     onClick={() => setMobileNavOpen(false)}
                   >
-                    <UserPlus className="mr-2 h-5 w-5" />
+                    <UserPlus
+                      className={styleClass("componentsDashboardLayoutStyle8")}
+                    />
                     Organizers
                   </Button>
                 </Link>
@@ -209,40 +257,51 @@ export function DashboardLayout({
                 <Link href="/admin/rooms">
                   <Button
                     variant="ghost"
-                    className="w-full justify-start"
+                    xstyle={styles.componentsDashboardLayoutStyle7}
+                    className="sx-componentsDashboardLayoutStyle7"
                     onClick={() => setMobileNavOpen(false)}
                   >
-                    <Home className="mr-2 h-5 w-5" />
+                    <Home
+                      className={styleClass("componentsDashboardLayoutStyle8")}
+                    />
                     Rooms
                   </Button>
                 </Link>
               )}
               <Button
                 variant="ghost"
-                className="w-full justify-start"
+                xstyle={styles.componentsDashboardLayoutStyle7}
+                className="sx-componentsDashboardLayoutStyle7"
                 onClick={toggleDarkMode}
               >
                 {darkMode ? (
                   <>
-                    <Sun className="mr-2 h-5 w-5" />
+                    <Sun
+                      className={styleClass("componentsDashboardLayoutStyle8")}
+                    />
                     Light Mode
                   </>
                 ) : (
                   <>
-                    <Moon className="mr-2 h-5 w-5" />
+                    <Moon
+                      className={styleClass("componentsDashboardLayoutStyle8")}
+                    />
                     Dark Mode
                   </>
                 )}
               </Button>
               <Button
                 variant="ghost"
-                className="w-full justify-start text-destructive hover:text-destructive"
+                xstyle={styles.componentsDashboardLayoutStyle20}
+                className="sx-componentsDashboardLayoutStyle20 ui-text-defined"
                 onClick={() => {
                   setMobileNavOpen(false);
                   handleLogout();
                 }}
               >
-                <LogOut className="mr-2 h-5 w-5" />
+                <LogOut
+                  className={styleClass("componentsDashboardLayoutStyle8")}
+                />
                 Logout
               </Button>
             </nav>
@@ -251,23 +310,27 @@ export function DashboardLayout({
       )}
 
       {/* Main content */}
-      <div className="flex-1 overflow-auto">
+      <div className={styleClass("componentsDashboardLayoutStyle45")}>
         {/* Header */}
-        <header className="bg-card border-b p-4 sticky top-0 z-10">
-          <div className="flex justify-between items-center">
-            <h1 className="text-xl font-bold">Dashboard</h1>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">
+        <header className={styleClass("componentsDashboardLayoutStyle46")}>
+          <div className={styleClass("appAdminDashboardPageStyle3")}>
+            <h1 className={styleClass("componentsDashboardLayoutStyle48")}>
+              Dashboard
+            </h1>
+            <div className={styleClass("componentsDashboardLayoutStyle49")}>
+              <span className={styleClass("componentsDashboardLayoutStyle50")}>
                 Welcome, {userName}
               </span>
-              <div className="h-8 w-8 rounded-full bg-secondary flex items-center justify-center">
+              <div className={styleClass("componentsDashboardLayoutStyle51")}>
                 {userName.charAt(0).toUpperCase()}
               </div>
             </div>
           </div>
         </header>
 
-        <main className="p-6">{children}</main>
+        <main className={styleClass("componentsDashboardLayoutStyle52")}>
+          {children}
+        </main>
       </div>
     </div>
   );

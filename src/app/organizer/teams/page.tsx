@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
@@ -85,21 +88,25 @@ export default function OrganizerTeamsPage() {
   };
 
   if (!user) {
-    return <div className="p-8">Loading...</div>;
+    return (
+      <div className={styleClass("appAdminDashboardPageStyle1")}>
+        Loading...
+      </div>
+    );
   }
 
   return (
     <DashboardLayout userRole="ORGANIZER" userName={user.email.split("@")[0]}>
-      <div className="space-y-6">
-        <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold tracking-tight">Teams</h2>
+      <div className={styleClass("appAdminDashboardPageStyle2")}>
+        <div className={styleClass("appAdminDashboardPageStyle3")}>
+          <h2 className={styleClass("appAdminDashboardPageStyle4")}>Teams</h2>
           <Button onClick={() => router.push("/organizer/teams/add")}>
-            <Plus className="mr-2 h-4 w-4" />
+            <Plus className={styleClass("appAdminDashboardPageStyle6")} />
             Add Team
           </Button>
         </div>
 
-        <div className="rounded-md border">
+        <div className={styleClass("appAdminDashboardPageStyle8")}>
           <Table>
             <TableHeader>
               <TableRow>
@@ -108,19 +115,32 @@ export default function OrganizerTeamsPage() {
                 <TableHead>Room</TableHead>
                 <TableHead>Participants</TableHead>
                 <TableHead>Team Leader</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead
+                  xstyle={styles.appAdminDashboardPageStyle9}
+                  className="sx-appAdminDashboardPageStyle9 ui-text-defined"
+                >
+                  Actions
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center py-6">
+                  <TableCell
+                    colSpan={6}
+                    xstyle={styles.appAdminDashboardPageStyle10}
+                    className="sx-appAdminDashboardPageStyle10 ui-text-defined"
+                  >
                     Loading teams...
                   </TableCell>
                 </TableRow>
               ) : teams.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center py-6">
+                  <TableCell
+                    colSpan={6}
+                    xstyle={styles.appAdminDashboardPageStyle10}
+                    className="sx-appAdminDashboardPageStyle10 ui-text-defined"
+                  >
                     No teams found. Add your first team.
                   </TableCell>
                 </TableRow>
@@ -128,7 +148,10 @@ export default function OrganizerTeamsPage() {
                 teams.map((team) => (
                   <TableRow key={team.team_id}>
                     <TableCell>{team.team_id}</TableCell>
-                    <TableCell className="font-medium">
+                    <TableCell
+                      xstyle={styles.appAdminDashboardPageStyle12}
+                      className="sx-appAdminDashboardPageStyle12"
+                    >
                       {team.team_name}
                     </TableCell>
                     <TableCell>{team.room_name}</TableCell>
@@ -136,8 +159,13 @@ export default function OrganizerTeamsPage() {
                     <TableCell>
                       {team.team_leader_id ? "Assigned" : "Not assigned"}
                     </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex justify-end gap-2">
+                    <TableCell
+                      xstyle={styles.appAdminDashboardPageStyle9}
+                      className="sx-appAdminDashboardPageStyle9 ui-text-defined"
+                    >
+                      <div
+                        className={styleClass("appAdminDashboardPageStyle16")}
+                      >
                         <Button
                           variant="ghost"
                           size="icon"
@@ -145,14 +173,22 @@ export default function OrganizerTeamsPage() {
                             router.push(`/organizer/teams/${team.team_id}`)
                           }
                         >
-                          <Eye className="h-4 w-4" />
+                          <Eye
+                            className={styleClass(
+                              "appAdminDashboardPageStyle17",
+                            )}
+                          />
                         </Button>
                         <Button
                           variant="ghost"
                           size="icon"
                           onClick={() => handleDeleteTeam(team.team_id)}
                         >
-                          <Trash className="h-4 w-4" />
+                          <Trash
+                            className={styleClass(
+                              "appAdminDashboardPageStyle17",
+                            )}
+                          />
                         </Button>
                       </div>
                     </TableCell>

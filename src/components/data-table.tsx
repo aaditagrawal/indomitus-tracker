@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useState } from "react";
 import {
   ColumnDef,
@@ -58,7 +61,7 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       {searchColumn && (
-        <div className="flex items-center py-4">
+        <div className={styleClass("componentsDataTableStyle1")}>
           <Input
             placeholder={searchPlaceholder}
             value={
@@ -67,11 +70,12 @@ export function DataTable<TData, TValue>({
             onChange={(event) =>
               table.getColumn(searchColumn)?.setFilterValue(event.target.value)
             }
-            className="max-w-sm"
+            xstyle={styles.componentsDataTableStyle2}
+            className="sx-componentsDataTableStyle2"
           />
         </div>
       )}
-      <div className="rounded-md border">
+      <div className={styleClass("appAdminDashboardPageStyle8")}>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -112,7 +116,8 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  xstyle={styles.componentsDataTableStyle4}
+                  className="sx-componentsDataTableStyle4 ui-text-defined"
                 >
                   No results.
                 </TableCell>
@@ -121,7 +126,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className={styleClass("componentsDataTableStyle5")}>
         <Button
           variant="outline"
           size="sm"
