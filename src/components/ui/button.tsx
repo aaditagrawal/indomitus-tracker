@@ -7,6 +7,8 @@ import type { ClassValue } from "clsx";
 
 import { cn } from "@/lib/utils";
 
+// Each compiled variant includes the shared base declarations and state markers.
+// buttonBase is the equivalent group for an explicitly null variant.
 const variantStyles = {
   default: styles.buttonvariantdefault,
   destructive: styles.buttonvariantdestructive,

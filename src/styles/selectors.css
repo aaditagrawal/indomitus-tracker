@@ -662,6 +662,8 @@
   ):not(#\#):not(#\#):disabled {
   opacity: 0.5;
 }
+/* Preserve the original Tailwind output for has-[data-slot=card-action].
+   Its empty :is() also matched nothing before this styling-only migration. */
 .sx-componentsUiCardStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
     #\#
   ):not(#\#):not(#\#):has(:is()) {
