@@ -1,0 +1,1734 @@
+/* Compound states retain the original cascade. Specificity sentinels beat
+ * StyleX property atoms except within the original zero-specificity :where()
+ * spacing rules, where child margin overrides intentionally still win. */
+/* Preserve compound state and descendant selectors in their original cascade order. */
+:where(.sx-appAdminTeamsIdPageStyle29 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(
+    calc(var(--spacing) * 1) * var(--tw-space-y-reverse)
+  );
+  margin-block-end: calc(
+    calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse))
+  );
+}
+:where(.sx-appAdminTeamsIdPageStyle25 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(
+    calc(var(--spacing) * 2) * var(--tw-space-y-reverse)
+  );
+  margin-block-end: calc(
+    calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse))
+  );
+}
+:where(.sx-appAdminOrganizersAddPageStyle6 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(
+    calc(var(--spacing) * 4) * var(--tw-space-y-reverse)
+  );
+  margin-block-end: calc(
+    calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse))
+  );
+}
+:where(.sx-appAdminDashboardPageStyle2 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(
+    calc(var(--spacing) * 6) * var(--tw-space-y-reverse)
+  );
+  margin-block-end: calc(
+    calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse))
+  );
+}
+:where(.sx-appAdminOrganizersAddPageStyle2 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(
+    calc(var(--spacing) * 6) * var(--tw-space-y-reverse)
+  );
+  margin-block-end: calc(
+    calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse))
+  );
+}
+:where(.sx-appAdminTeamsAddPageStyle2 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(
+    calc(var(--spacing) * 6) * var(--tw-space-y-reverse)
+  );
+  margin-block-end: calc(
+    calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse))
+  );
+}
+:where(.sx-appAdminOrganizersAddPageStyle5 > :not(:last-child)) {
+  --tw-space-y-reverse: 0;
+  margin-block-start: calc(
+    calc(var(--spacing) * 8) * var(--tw-space-y-reverse)
+  );
+  margin-block-end: calc(
+    calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse))
+  );
+}
+:where(.sx-componentsDataTableStyle5 > :not(:last-child)) {
+  --tw-space-x-reverse: 0;
+  margin-inline-start: calc(
+    calc(var(--spacing) * 2) * var(--tw-space-x-reverse)
+  );
+  margin-inline-end: calc(
+    calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse))
+  );
+}
+.sx-componentsUiLabelStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(:where(.ui-group)[data-disabled="true"] *) {
+  pointer-events: none;
+}
+.sx-componentsUiLabelStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(:where(.ui-group)[data-disabled="true"] *) {
+  opacity: 0.5;
+}
+.sx-componentsUiLabelStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(:where(.ui-peer):disabled ~ *) {
+  cursor: not-allowed;
+}
+.sx-componentsUiLabelStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(:where(.ui-peer):disabled ~ *) {
+  opacity: 0.5;
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  ::selection {
+  background-color: var(--primary);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::selection {
+  background-color: var(--primary);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  ::selection {
+  color: var(--primary-foreground);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::selection {
+  color: var(--primary-foreground);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::file-selector-button {
+  display: inline-flex;
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::file-selector-button {
+  height: calc(var(--spacing) * 7);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::file-selector-button {
+  border-style: var(--tw-border-style);
+  border-width: 0;
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::file-selector-button {
+  background-color: #0000;
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::file-selector-button {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::file-selector-button {
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::file-selector-button {
+  color: var(--foreground);
+}
+.sx-componentsUiCommandStyle7:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::placeholder {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)::placeholder {
+  color: var(--muted-foreground);
+}
+@media (hover: hover) {
+  .sx-appAdminTeamsIdPageStyle30:not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):not(#\#):hover {
+    background-color: var(--accent);
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    background-color: var(--accent);
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    background-color: var(--accent);
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    background-color: color-mix(in oklab, var(--destructive) 90%, transparent);
+  }
+}
+@media (hover: hover) {
+  .sx-componentsUiTableStyle6:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    background-color: color-mix(in oklab, var(--muted) 50%, transparent);
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    background-color: color-mix(in oklab, var(--primary) 90%, transparent);
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    background-color: color-mix(in oklab, var(--secondary) 80%, transparent);
+  }
+}
+@media (hover: hover) {
+  .sx-appAdminTeamsIdPageStyle30:not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):not(#\#):hover {
+    color: var(--accent-foreground);
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    color: var(--accent-foreground);
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    color: var(--accent-foreground);
+  }
+}
+@media (hover: hover) {
+  .sx-componentsDashboardLayoutStyle20:not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):not(#\#):hover {
+    color: var(--destructive);
+  }
+}
+@media (hover: hover) {
+  .sx-componentsLoginFormStyle9:not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):not(#\#):hover {
+    text-decoration-line: underline;
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    text-decoration-line: underline;
+  }
+}
+@media (hover: hover) {
+  .sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):hover {
+    opacity: 1;
+  }
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):focus {
+  background-color: var(--accent);
+}
+.sx-componentsUiDropdownMenuStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):focus {
+  background-color: var(--accent);
+}
+.sx-componentsUiDropdownMenuStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):focus {
+  background-color: var(--accent);
+}
+.sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus {
+  background-color: var(--accent);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):focus {
+  color: var(--accent-foreground);
+}
+.sx-componentsUiDropdownMenuStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):focus {
+  color: var(--accent-foreground);
+}
+.sx-componentsUiDropdownMenuStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):focus {
+  color: var(--accent-foreground);
+}
+.sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus {
+  color: var(--accent-foreground);
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus {
+  --tw-ring-color: var(--ring);
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus {
+  --tw-ring-offset-width: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0
+    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus {
+  --tw-outline-style: none;
+  outline-style: none;
+}
+@media (forced-colors: active) {
+  .sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):focus {
+    outline-offset: 2px;
+    outline: 2px solid #0000;
+  }
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-componentsUiSwitchStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  border-color: var(--ring);
+}
+.sx-componentsUiScrollAreaStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-componentsUiSwitchStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+    calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-componentsUiSwitchStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 50%, transparent);
+}
+.sx-componentsUiScrollAreaStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):focus-visible {
+  outline-style: var(--tw-outline-style);
+  outline-width: 1px;
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  pointer-events: none;
+}
+.sx-componentsUiCommandStyle7:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  cursor: not-allowed;
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  cursor: not-allowed;
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  cursor: not-allowed;
+}
+.sx-componentsUiSwitchStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  cursor: not-allowed;
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-componentsUiCommandStyle7:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-componentsUiSwitchStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):disabled {
+  opacity: 0.5;
+}
+.sx-componentsUiCardStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):has(:is()) {
+  grid-template-columns: 1fr auto;
+}
+.sx-alertvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):has(> svg) {
+  grid-template-columns: calc(var(--spacing) * 4) 1fr;
+}
+.sx-alertvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):has(> svg) {
+  grid-template-columns: calc(var(--spacing) * 4) 1fr;
+}
+.sx-alertBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):has(> svg) {
+  grid-template-columns: calc(var(--spacing) * 4) 1fr;
+}
+.sx-alertvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):has(> svg) {
+  column-gap: calc(var(--spacing) * 3);
+}
+.sx-alertvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):has(> svg) {
+  column-gap: calc(var(--spacing) * 3);
+}
+.sx-alertBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):has(> svg) {
+  column-gap: calc(var(--spacing) * 3);
+}
+.sx-buttonsizesm:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):has(> svg) {
+  padding-inline: calc(var(--spacing) * 2.5);
+}
+.sx-buttonsizedefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):has(> svg) {
+  padding-inline: calc(var(--spacing) * 3);
+}
+.sx-buttonsizelg:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):has(> svg) {
+  padding-inline: calc(var(--spacing) * 4);
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  border-color: var(--destructive);
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-disabled] {
+  pointer-events: none;
+}
+.sx-componentsUiDropdownMenuStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-disabled] {
+  pointer-events: none;
+}
+.sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-disabled] {
+  pointer-events: none;
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-disabled] {
+  opacity: 0.5;
+}
+.sx-componentsUiDropdownMenuStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-disabled] {
+  opacity: 0.5;
+}
+.sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-disabled] {
+  opacity: 0.5;
+}
+.sx-componentsUiCommandStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-disabled="true"] {
+  pointer-events: none;
+}
+.sx-componentsUiCommandStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-disabled="true"] {
+  opacity: 0.5;
+}
+.sx-componentsUiFormStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-error="true"] {
+  color: var(--destructive);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-inset] {
+  padding-left: calc(var(--spacing) * 8);
+}
+.sx-componentsUiDropdownMenuStyle9:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-inset] {
+  padding-left: calc(var(--spacing) * 8);
+}
+.sx-componentsUiDropdownMenuStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-inset] {
+  padding-left: calc(var(--spacing) * 8);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-placeholder] {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiCommandStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-selected="true"] {
+  background-color: var(--accent);
+}
+.sx-componentsUiCommandStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-selected="true"] {
+  color: var(--accent-foreground);
+}
+.sx-componentsUiSelectStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-side="bottom"] {
+  --tw-translate-y: calc(var(--spacing) * 1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-componentsUiSelectStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-side="left"] {
+  --tw-translate-x: calc(var(--spacing) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-componentsUiSelectStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-side="right"] {
+  --tw-translate-x: calc(var(--spacing) * 1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-componentsUiSelectStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-side="top"] {
+  --tw-translate-y: calc(var(--spacing) * -1);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-size="default"] {
+  height: calc(var(--spacing) * 9);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-size="sm"] {
+  height: calc(var(--spacing) * 8);
+}
+:is(
+  .sx-alertvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#)
+    > *
+)[data-slot="alert-description"] {
+  color: color-mix(in oklab, var(--destructive) 90%, transparent);
+}
+:is(
+  .sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):not(#\#)
+    *
+)[data-slot="command-input-wrapper"] {
+  height: calc(var(--spacing) * 12);
+}
+:is(
+  .sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#)
+    > *
+)[data-slot="select-value"] {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+:is(
+  .sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#)
+    > *
+)[data-slot="select-value"] {
+  display: flex;
+}
+:is(
+  .sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#)
+    > *
+)[data-slot="select-value"] {
+  align-items: center;
+}
+:is(
+  .sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#)
+    > *
+)[data-slot="select-value"] {
+  gap: calc(var(--spacing) * 2);
+}
+.sx-componentsUiSwitchStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-state="checked"] {
+  --tw-translate-x: calc(100% - 2px);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-componentsUiSwitchStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-state="checked"] {
+  background-color: var(--primary);
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-state="open"] {
+  background-color: var(--accent);
+}
+.sx-componentsUiDropdownMenuStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-state="open"] {
+  background-color: var(--accent);
+}
+.sx-componentsUiDropdownMenuStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-state="open"] {
+  color: var(--accent-foreground);
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-state="open"] {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiTableStyle6:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-state="selected"] {
+  background-color: var(--muted);
+}
+.sx-componentsUiSwitchStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-state="unchecked"] {
+  --tw-translate-x: calc(var(--spacing) * 0);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-componentsUiSwitchStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)[data-state="unchecked"] {
+  background-color: var(--input);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-variant="destructive"] {
+  color: var(--destructive);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-variant="destructive"]:focus {
+  background-color: color-mix(in oklab, var(--destructive) 10%, transparent);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)[data-variant="destructive"]:focus {
+  color: var(--destructive);
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *) {
+  border-color: var(--input);
+}
+.sx-appAdminOrganizersPageStyle11:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *) {
+  background-color: color-mix(in oklab, var(--color-blue-900) 30%, transparent);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *) {
+  background-color: color-mix(in oklab, var(--destructive) 60%, transparent);
+}
+.sx-appAdminOrganizersPageStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *) {
+  background-color: color-mix(
+    in oklab,
+    var(--color-green-900) 30%,
+    transparent
+  );
+}
+.sx-appLoginPageStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *) {
+  background-color: color-mix(
+    in oklab,
+    var(--color-green-950) 30%,
+    transparent
+  );
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *) {
+  background-color: color-mix(in oklab, var(--input) 30%, transparent);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *) {
+  background-color: color-mix(in oklab, var(--input) 30%, transparent);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *) {
+  background-color: color-mix(in oklab, var(--input) 30%, transparent);
+}
+.sx-appAdminOrganizersPageStyle10:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *) {
+  background-color: color-mix(
+    in oklab,
+    var(--color-purple-900) 30%,
+    transparent
+  );
+}
+.sx-appAdminOrganizersPageStyle11:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *) {
+  color: var(--color-blue-300);
+}
+.sx-appAdminOrganizersPageStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *) {
+  color: var(--color-green-300);
+}
+.sx-appAdminOrganizersPageStyle10:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *) {
+  color: var(--color-purple-300);
+}
+.sx-componentsUiScrollAreaStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *) {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 20%, transparent);
+}
+.sx-componentsUiScrollAreaStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *) {
+  outline-color: color-mix(in oklab, var(--ring) 40%, transparent);
+}
+@media (hover: hover) {
+  .sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):is(.dark *):hover {
+    background-color: color-mix(in oklab, var(--accent) 50%, transparent);
+  }
+}
+@media (hover: hover) {
+  .sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):is(.dark *):hover {
+    background-color: color-mix(in oklab, var(--input) 50%, transparent);
+  }
+}
+@media (hover: hover) {
+  .sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):is(.dark *):hover {
+    background-color: color-mix(in oklab, var(--input) 50%, transparent);
+  }
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *):focus-visible {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-componentsUiInputStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[aria-invalid="true"] {
+  --tw-ring-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+}
+.sx-componentsUiSwitchStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[data-state="checked"] {
+  background-color: var(--primary-foreground);
+}
+.sx-componentsUiSwitchStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[data-state="unchecked"] {
+  background-color: var(--foreground);
+}
+.sx-componentsUiSwitchStyle1:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):is(.dark *)[data-state="unchecked"] {
+  background-color: color-mix(in oklab, var(--input) 80%, transparent);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#):is(.dark *)[data-variant="destructive"]:focus {
+  background-color: color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group-heading] {
+  padding-inline: calc(var(--spacing) * 2);
+}
+.sx-componentsUiCommandStyle10:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group-heading] {
+  padding-inline: calc(var(--spacing) * 2);
+}
+.sx-componentsUiCommandStyle10:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group-heading] {
+  padding-block: calc(var(--spacing) * 1.5);
+}
+.sx-componentsUiCommandStyle10:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group-heading] {
+  font-size: var(--text-xs);
+  line-height: var(--tw-leading, var(--text-xs--line-height));
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group-heading] {
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
+}
+.sx-componentsUiCommandStyle10:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group-heading] {
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group-heading] {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiCommandStyle10:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group-heading] {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group] {
+  padding-inline: calc(var(--spacing) * 2);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-group]:not([hidden])
+  ~ [cmdk-group] {
+  padding-top: calc(var(--spacing) * 0);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-input-wrapper]
+  svg {
+  height: calc(var(--spacing) * 5);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-input-wrapper]
+  svg {
+  width: calc(var(--spacing) * 5);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-input] {
+  height: calc(var(--spacing) * 12);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-item] {
+  padding-inline: calc(var(--spacing) * 2);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-item] {
+  padding-block: calc(var(--spacing) * 3);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-item]
+  svg {
+  height: calc(var(--spacing) * 5);
+}
+.sx-componentsUiCommandStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  [cmdk-item]
+  svg {
+  width: calc(var(--spacing) * 5);
+}
+.sx-componentsUiAlertStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  p {
+  --tw-leading: var(--leading-relaxed);
+  line-height: var(--leading-relaxed);
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-componentsUiCommandStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-componentsUiDropdownMenuStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  pointer-events: none;
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-componentsUiCommandStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-componentsUiDropdownMenuStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg {
+  flex-shrink: 0;
+}
+.sx-buttonvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-buttonvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-buttonvariantoutline:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-buttonvariantsecondary:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-buttonvariantghost:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-buttonvariantlink:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-buttonBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-componentsUiCommandStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-componentsUiDialogStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-componentsUiDropdownMenuStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-size-defined"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-componentsUiCommandStyle12:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-text-defined"]) {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):not(#\#)
+  svg:not([class*="ui-text-defined"]) {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiSelectStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-text-defined"]) {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  svg:not([class*="ui-text-defined"]) {
+  color: var(--muted-foreground);
+}
+.sx-componentsUiTableStyle3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  tr {
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 1px;
+}
+.sx-componentsUiTableStyle4:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  tr:last-child {
+  border-style: var(--tw-border-style);
+  border-width: 0;
+}
+.sx-componentsUiTableStyle7:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):has([role="checkbox"]) {
+  padding-right: calc(var(--spacing) * 0);
+}
+.sx-componentsUiTableStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#):has([role="checkbox"]) {
+  padding-right: calc(var(--spacing) * 0);
+}
+.sx-componentsUiCardStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#).ui-border-b {
+  padding-bottom: calc(var(--spacing) * 6);
+}
+.sx-componentsUiCardStyle7:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#).ui-border-t {
+  padding-top: calc(var(--spacing) * 6);
+}
+:is(
+    .sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(
+        #\#
+      ):not(#\#):not(#\#):not(#\#)
+      > *
+  ):is(span):last-child {
+  display: flex;
+}
+:is(
+    .sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(
+        #\#
+      ):not(#\#):not(#\#):not(#\#)
+      > *
+  ):is(span):last-child {
+  align-items: center;
+}
+:is(
+    .sx-componentsUiSelectStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(
+        #\#
+      ):not(#\#):not(#\#):not(#\#)
+      > *
+  ):is(span):last-child {
+  gap: calc(var(--spacing) * 2);
+}
+:is(
+  .sx-componentsUiDropdownMenuStyle2:not(#\#):not(#\#):not(#\#):not(#\#):not(
+      #\#
+    ):not(#\#):not(#\#):not(#\#)[data-variant="destructive"]
+    > *
+):is(svg) {
+  color: var(--destructive) !important;
+}
+.sx-componentsUiTableStyle7:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > [role="checkbox"] {
+  --tw-translate-y: 2px;
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-componentsUiTableStyle8:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > [role="checkbox"] {
+  --tw-translate-y: 2px;
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-alertvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > svg {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-alertvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > svg {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-alertBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  > svg {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+}
+.sx-alertvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > svg {
+  --tw-translate-y: calc(var(--spacing) * 0.5);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-alertvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > svg {
+  --tw-translate-y: calc(var(--spacing) * 0.5);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-alertBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  > svg {
+  --tw-translate-y: calc(var(--spacing) * 0.5);
+  translate: var(--tw-translate-x) var(--tw-translate-y);
+}
+.sx-alertvariantdefault:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > svg {
+  color: currentColor;
+}
+.sx-alertvariantdestructive:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > svg {
+  color: currentColor;
+}
+.sx-alertBase:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#)
+  > svg {
+  color: currentColor;
+}
+.sx-componentsUiTableStyle5:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#):not(
+    #\#
+  ):not(#\#):not(#\#)
+  > tr:last-child {
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 0;
+}

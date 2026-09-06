@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
@@ -47,7 +50,7 @@ export default function OrganizerParticipantsPage() {
       cell: ({ row }) => (
         <div>
           {row.original.is_leader ? (
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+            <span className={styleClass("appAdminParticipantsPageStyle1")}>
               Team Leader
             </span>
           ) : (
@@ -131,21 +134,28 @@ export default function OrganizerParticipantsPage() {
   }, [router, fetchParticipants]); // Now fetchParticipants is in the dependency array
 
   if (!user) {
-    return <div className="p-8">Loading...</div>;
+    return (
+      <div className={styleClass("appAdminDashboardPageStyle1")}>
+        Loading...
+      </div>
+    );
   }
 
   return (
     <DashboardLayout userRole="ORGANIZER" userName={user.email.split("@")[0]}>
-      <div className="space-y-6">
-        <h2 className="text-3xl font-bold tracking-tight">Participants</h2>
+      <div className={styleClass("appAdminDashboardPageStyle2")}>
+        <h2 className={styleClass("appAdminDashboardPageStyle4")}>
+          Participants
+        </h2>
 
-        <div className="flex gap-4 mb-6">
-          <div className="relative flex-1">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+        <div className={styleClass("appAdminParticipantsPageStyle5")}>
+          <div className={styleClass("appAdminParticipantsPageStyle6")}>
+            <Search className={styleClass("appAdminParticipantsPageStyle7")} />
             <Input
               type="search"
               placeholder="Search by name, email, phone, team name, discord ID, etc..."
-              className="pl-8"
+              xstyle={styles.appAdminParticipantsPageStyle8}
+              className="sx-appAdminParticipantsPageStyle8"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -153,7 +163,9 @@ export default function OrganizerParticipantsPage() {
         </div>
 
         {loading ? (
-          <div className="text-center py-8">Loading participants...</div>
+          <div className={styleClass("appAdminParticipantsPageStyle9")}>
+            Loading participants...
+          </div>
         ) : (
           <DataTable columns={columns} data={participants} />
         )}

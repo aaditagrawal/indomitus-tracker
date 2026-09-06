@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoginForm } from "@/components/login-form";
@@ -79,14 +82,15 @@ export default function Page() {
   };
 
   return (
-    <div className="flex min-h-svh w-full flex-col items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
+    <div className={styleClass("appLoginPageStyle1")}>
+      <div className={styleClass("appLoginPageStyle2")}>
         {status.type === "success" && (
           <Alert
-            className="mb-6 border-green-500 bg-green-50 dark:bg-green-950/30"
+            xstyle={styles.appLoginPageStyle3}
+            className="sx-appLoginPageStyle3"
             data-test="success-alert"
           >
-            <CheckCircle className="h-4 w-4 text-green-600" />
+            <CheckCircle className={styleClass("appLoginPageStyle4")} />
             <AlertTitle>Success</AlertTitle>
             <AlertDescription>{status.message}</AlertDescription>
           </Alert>
@@ -94,10 +98,11 @@ export default function Page() {
 
         {status.type === "error" && (
           <Alert
-            className="mb-6 border-destructive bg-destructive/10"
+            xstyle={styles.appLoginPageStyle5}
+            className="sx-appLoginPageStyle5"
             data-test="error-alert"
           >
-            <AlertCircle className="h-4 w-4 text-destructive" />
+            <AlertCircle className={styleClass("appLoginPageStyle6")} />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>{status.message}</AlertDescription>
           </Alert>

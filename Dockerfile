@@ -18,7 +18,7 @@ RUN bun install
 
 # Install all missing dependencies
 RUN bun add react-hook-form @hookform/resolvers zod \
-    class-variance-authority clsx tailwind-merge \
+    clsx \
     @radix-ui/react-label @radix-ui/react-slot \
     @radix-ui/react-dialog @radix-ui/react-select \
     lucide-react next-themes @libsql/client drizzle-orm better-sqlite3

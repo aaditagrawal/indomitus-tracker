@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,8 +10,10 @@ import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
 import { FormEventHandler } from "react";
 
-interface LoginFormProps
-  extends Omit<React.ComponentProps<"form">, "onSubmit"> {
+interface LoginFormProps extends Omit<
+  React.ComponentProps<"form">,
+  "onSubmit"
+> {
   onSubmit: (formData: FormData) => Promise<void>;
   isLoading?: boolean;
 }
@@ -27,18 +32,20 @@ export function LoginForm({
 
   return (
     <form
-      className={cn("flex flex-col gap-6", className)}
+      className={cn(styleClass("componentsLoginFormStyle1"), className)}
       onSubmit={handleSubmit}
       {...props}
     >
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Login to your account</h1>
-        <p className="text-muted-foreground text-sm text-balance">
+      <div className={styleClass("componentsLoginFormStyle2")}>
+        <h1 className={styleClass("componentsDashboardStatsStyle5")}>
+          Login to your account
+        </h1>
+        <p className={styleClass("componentsLoginFormStyle4")}>
           Enter your email below to login to your account
         </p>
       </div>
-      <div className="grid gap-6">
-        <div className="grid gap-3">
+      <div className={styleClass("componentsLoginFormStyle5")}>
+        <div className={styleClass("componentsLoginFormStyle6")}>
           <Label htmlFor="email">Email</Label>
           <Input
             id="email"
@@ -50,13 +57,10 @@ export function LoginForm({
             autoComplete="email"
           />
         </div>
-        <div className="grid gap-3">
-          <div className="flex items-center">
+        <div className={styleClass("componentsLoginFormStyle6")}>
+          <div className={styleClass("componentsLoginFormStyle8")}>
             <Label htmlFor="password">Password</Label>
-            <a
-              href="#"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
-            >
+            <a href="#" className={styleClass("componentsLoginFormStyle9")}>
               Forgot your password?
             </a>
           </div>
@@ -69,10 +73,15 @@ export function LoginForm({
             autoComplete="current-password"
           />
         </div>
-        <Button type="submit" className="w-full" disabled={isLoading}>
+        <Button
+          type="submit"
+          xstyle={styles.appAdminTeamsAddPageStyle13}
+          className="sx-appAdminTeamsAddPageStyle13"
+          disabled={isLoading}
+        >
           {isLoading ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2 className={styleClass("componentsLoginFormStyle11")} />
               Logging in...
             </>
           ) : (

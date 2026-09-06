@@ -1,66 +1,84 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as stylex from "@stylexjs/stylex";
+import { styles } from "@/styles/site.stylex";
+import { styleClass, type StyledProps, type XStyle } from "@/styles/classes";
+import * as React from "react";
+import type { ClassValue } from "clsx";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const alertVariants = cva(
-  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
-  {
-    variants: {
-      variant: {
-        default: "bg-card text-card-foreground",
-        destructive:
-          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-)
+const variantStyles = {
+  default: styles.alertvariantdefault,
+  destructive: styles.alertvariantdestructive,
+};
+const variantMarkers = {
+  default: "sx-alertvariantdefault ui-text-defined",
+  destructive: "sx-alertvariantdestructive ui-text-defined",
+};
+type Variant = keyof typeof variantStyles;
+
+type VariantOptions = { variant?: Variant | null };
+/** Preserve the public class builder while compiling its atomic styles. */
+function alertVariants({
+  variant = "default",
+  className,
+  class: extraClass,
+  xstyle,
+}: VariantOptions & {
+  className?: ClassValue;
+  class?: ClassValue;
+  xstyle?: XStyle;
+} = {}) {
+  return cn(
+    stylex.props(variant ? variantStyles[variant] : styles.alertBase, xstyle)
+      .className,
+    variant ? variantMarkers[variant] : "sx-alertBase",
+    className,
+    extraClass,
+  );
+}
 
 function Alert({
   className,
+  xstyle,
   variant,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
+}: StyledProps<React.ComponentProps<"div">> & VariantOptions) {
   return (
     <div
       data-slot="alert"
       role="alert"
-      className={cn(alertVariants({ variant }), className)}
+      className={cn(alertVariants({ variant, xstyle }), className)}
       {...props}
     />
-  )
+  );
 }
 
-function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
+function AlertTitle({
+  className,
+  xstyle,
+  ...props
+}: StyledProps<React.ComponentProps<"div">>) {
   return (
     <div
       data-slot="alert-title"
-      className={cn(
-        "col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight",
-        className
-      )}
+      className={cn(styleClass("componentsUiAlertStyle1", xstyle), className)}
       {...props}
     />
-  )
+  );
 }
 
 function AlertDescription({
   className,
+  xstyle,
   ...props
-}: React.ComponentProps<"div">) {
+}: StyledProps<React.ComponentProps<"div">>) {
   return (
     <div
       data-slot="alert-description"
-      className={cn(
-        "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
-        className
-      )}
+      className={cn(styleClass("componentsUiAlertStyle2", xstyle), className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Alert, AlertTitle, AlertDescription }
+export { Alert, AlertTitle, AlertDescription };

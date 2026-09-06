@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
@@ -200,18 +203,27 @@ export default function OrganizerAddTeamPage() {
   };
 
   if (!user) {
-    return <div className="p-8">Loading...</div>;
+    return (
+      <div className={styleClass("appAdminDashboardPageStyle1")}>
+        Loading...
+      </div>
+    );
   }
 
   return (
     <DashboardLayout userRole="ORGANIZER" userName={user.email.split("@")[0]}>
-      <div className="space-y-6 max-w-4xl mx-auto">
-        <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold tracking-tight">Add New Team</h2>
+      <div className={styleClass("appAdminTeamsAddPageStyle2")}>
+        <div className={styleClass("appAdminDashboardPageStyle3")}>
+          <h2 className={styleClass("appAdminDashboardPageStyle4")}>
+            Add New Team
+          </h2>
         </div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className={styleClass("appAdminOrganizersAddPageStyle5")}
+          >
             <Card>
               <CardHeader>
                 <CardTitle>Team Information</CardTitle>
@@ -219,7 +231,10 @@ export default function OrganizerAddTeamPage() {
                   Enter the basic information about the team.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent
+                xstyle={styles.appAdminOrganizersAddPageStyle6}
+                className="sx-appAdminOrganizersAddPageStyle6"
+              >
                 <FormField
                   control={form.control}
                   name="teamName"
@@ -292,12 +307,20 @@ export default function OrganizerAddTeamPage() {
                 {form.getValues().members.map((_, index) => (
                   <div
                     key={index}
-                    className="mb-8 p-4 border rounded-lg relative"
+                    className={styleClass("appAdminTeamsAddPageStyle7")}
                   >
-                    <div className="grid gap-4 mb-4">
-                      <div className="flex justify-between items-center">
-                        <h3 className="font-medium">Member {index + 1}</h3>
-                        <div className="flex gap-2">
+                    <div className={styleClass("appAdminTeamsAddPageStyle8")}>
+                      <div
+                        className={styleClass("appAdminDashboardPageStyle3")}
+                      >
+                        <h3
+                          className={styleClass("appAdminDashboardPageStyle12")}
+                        >
+                          Member {index + 1}
+                        </h3>
+                        <div
+                          className={styleClass("appAdminDashboardPageStyle5")}
+                        >
                           {index === 0 ? (
                             <Button type="button" variant="default" disabled>
                               ✓ Team Leader
@@ -335,7 +358,9 @@ export default function OrganizerAddTeamPage() {
                         )}
                       />
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div
+                        className={styleClass("appAdminTeamsAddPageStyle12")}
+                      >
                         <FormField
                           control={form.control}
                           name={`members.${index}.email`}
@@ -429,13 +454,17 @@ export default function OrganizerAddTeamPage() {
                     type="button"
                     variant="outline"
                     onClick={addMember}
-                    className="w-full"
+                    xstyle={styles.appAdminTeamsAddPageStyle13}
+                    className="sx-appAdminTeamsAddPageStyle13"
                   >
                     Add Team Member
                   </Button>
                 )}
               </CardContent>
-              <CardFooter className="flex justify-end gap-2">
+              <CardFooter
+                xstyle={styles.appAdminDashboardPageStyle16}
+                className="sx-appAdminDashboardPageStyle16"
+              >
                 <Button
                   type="button"
                   variant="outline"

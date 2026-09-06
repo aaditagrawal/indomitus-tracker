@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useEffect, useState, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
@@ -167,7 +170,11 @@ export default function AdminTeamDetailsPage() {
   );
 
   if (!user) {
-    return <div className="p-8">Loading...</div>;
+    return (
+      <div className={styleClass("appAdminDashboardPageStyle1")}>
+        Loading...
+      </div>
+    );
   }
 
   return (
@@ -175,64 +182,74 @@ export default function AdminTeamDetailsPage() {
       userRole={user.role as "ADMIN" | "SUPERADMIN"}
       userName={user.email.split("@")[0]}
     >
-      <div className="space-y-6">
-        <div className="flex items-center gap-4">
+      <div className={styleClass("appAdminDashboardPageStyle2")}>
+        <div className={styleClass("appAdminTeamsIdPageStyle3")}>
           <Button
             variant="outline"
             size="icon"
             onClick={() => router.push("/admin/teams")}
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className={styleClass("appAdminDashboardPageStyle17")} />
           </Button>
-          <h2 className="text-3xl font-bold tracking-tight">
+          <h2 className={styleClass("appAdminDashboardPageStyle4")}>
             {loading ? "Loading Team..." : `Team: ${team?.team_name}`}
           </h2>
         </div>
 
         {loading ? (
-          <div className="text-center py-8">Loading team details...</div>
+          <div className={styleClass("appAdminParticipantsPageStyle9")}>
+            Loading team details...
+          </div>
         ) : team ? (
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className={styleClass("appAdminTeamsIdPageStyle7")}>
             <Card>
               <CardHeader>
                 <CardTitle>Team Information</CardTitle>
                 <CardDescription>Basic details about the team</CardDescription>
               </CardHeader>
               <CardContent>
-                <dl className="space-y-4">
-                  <div className="flex flex-col">
-                    <dt className="text-sm font-medium text-muted-foreground">
+                <dl className={styleClass("appAdminOrganizersAddPageStyle6")}>
+                  <div className={styleClass("appAdminTeamsIdPageStyle9")}>
+                    <dt className={styleClass("appAdminTeamsIdPageStyle10")}>
                       Team ID
                     </dt>
-                    <dd className="text-lg">{team.team_id}</dd>
+                    <dd className={styleClass("appAdminTeamsIdPageStyle11")}>
+                      {team.team_id}
+                    </dd>
                   </div>
-                  <div className="flex flex-col">
-                    <dt className="text-sm font-medium text-muted-foreground">
+                  <div className={styleClass("appAdminTeamsIdPageStyle9")}>
+                    <dt className={styleClass("appAdminTeamsIdPageStyle10")}>
                       Team Name
                     </dt>
-                    <dd className="text-lg">{team.team_name}</dd>
+                    <dd className={styleClass("appAdminTeamsIdPageStyle11")}>
+                      {team.team_name}
+                    </dd>
                   </div>
-                  <div className="flex flex-col">
-                    <dt className="text-sm font-medium text-muted-foreground">
+                  <div className={styleClass("appAdminTeamsIdPageStyle9")}>
+                    <dt className={styleClass("appAdminTeamsIdPageStyle10")}>
                       Room
                     </dt>
-                    <dd className="text-lg">{team.room_name}</dd>
+                    <dd className={styleClass("appAdminTeamsIdPageStyle11")}>
+                      {team.room_name}
+                    </dd>
                   </div>
-                  <div className="flex flex-col">
-                    <dt className="text-sm font-medium text-muted-foreground">
+                  <div className={styleClass("appAdminTeamsIdPageStyle9")}>
+                    <dt className={styleClass("appAdminTeamsIdPageStyle10")}>
                       College
                     </dt>
-                    <dd className="text-lg">
+                    <dd className={styleClass("appAdminTeamsIdPageStyle11")}>
                       {team.participants.length > 0
                         ? team.participants[0].college
                         : "N/A"}
                     </dd>
                   </div>
-                  <div className="flex flex-col">
-                    <dt className="text-sm font-medium text-muted-foreground">
+                  <div className={styleClass("appAdminTeamsIdPageStyle9")}>
+                    <dt className={styleClass("appAdminTeamsIdPageStyle10")}>
                       Participants
                     </dt>
-                    <dd className="text-lg">{team.participants.length}</dd>
+                    <dd className={styleClass("appAdminTeamsIdPageStyle11")}>
+                      {team.participants.length}
+                    </dd>
                   </div>
                 </dl>
               </CardContent>
@@ -245,8 +262,11 @@ export default function AdminTeamDetailsPage() {
                   Assign organizers to manage this team.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
+              <CardContent
+                xstyle={styles.appAdminOrganizersAddPageStyle6}
+                className="sx-appAdminOrganizersAddPageStyle6"
+              >
+                <div className={styleClass("appAdminTeamsIdPageStyle25")}>
                   <Label htmlFor="organizer-search">Search Organizers</Label>
                   <Input
                     type="text"
@@ -257,28 +277,34 @@ export default function AdminTeamDetailsPage() {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className={styleClass("appAdminTeamsIdPageStyle26")}>
                   {/* Available Organizers List */}
-                  <div className="space-y-2">
+                  <div className={styleClass("appAdminTeamsIdPageStyle25")}>
                     <CardTitle>Available Organizers</CardTitle>
                     <CardDescription>
                       Organizers you can assign to the team.
                     </CardDescription>
-                    <ScrollArea className="h-[200px] rounded-md border p-2">
-                      <div className="space-y-1">
+                    <ScrollArea
+                      xstyle={styles.appAdminTeamsIdPageStyle28}
+                      className="sx-appAdminTeamsIdPageStyle28"
+                    >
+                      <div className={styleClass("appAdminTeamsIdPageStyle29")}>
                         {filteredAvailableOrganizers.length > 0 ? (
                           filteredAvailableOrganizers.map((organizer) => (
                             <Button
                               key={organizer.id}
                               variant="ghost"
-                              className="w-full justify-start rounded-md hover:bg-accent hover:text-accent-foreground"
+                              xstyle={styles.appAdminTeamsIdPageStyle30}
+                              className="sx-appAdminTeamsIdPageStyle30"
                               onClick={() => assignOrganizer(organizer)}
                             >
                               {organizer.email}
                             </Button>
                           ))
                         ) : (
-                          <div className="text-sm text-muted-foreground text-center">
+                          <div
+                            className={styleClass("appAdminTeamsIdPageStyle31")}
+                          >
                             No organizers available.
                           </div>
                         )}
@@ -287,26 +313,32 @@ export default function AdminTeamDetailsPage() {
                   </div>
 
                   {/* Assigned Organizers List */}
-                  <div className="space-y-2">
+                  <div className={styleClass("appAdminTeamsIdPageStyle25")}>
                     <CardTitle>Assigned Organizers</CardTitle>
                     <CardDescription>
                       Organizers currently assigned to this team.
                     </CardDescription>
-                    <ScrollArea className="h-[200px] rounded-md border p-2">
-                      <div className="space-y-1">
+                    <ScrollArea
+                      xstyle={styles.appAdminTeamsIdPageStyle28}
+                      className="sx-appAdminTeamsIdPageStyle28"
+                    >
+                      <div className={styleClass("appAdminTeamsIdPageStyle29")}>
                         {assignedOrganizers.length > 0 ? (
                           assignedOrganizers.map((organizer) => (
                             <Button
                               key={organizer.id}
                               variant="ghost"
-                              className="w-full justify-start rounded-md hover:bg-accent hover:text-accent-foreground"
+                              xstyle={styles.appAdminTeamsIdPageStyle30}
+                              className="sx-appAdminTeamsIdPageStyle30"
                               onClick={() => unassignOrganizer(organizer)}
                             >
                               {organizer.email}
                             </Button>
                           ))
                         ) : (
-                          <div className="text-sm text-muted-foreground text-center">
+                          <div
+                            className={styleClass("appAdminTeamsIdPageStyle31")}
+                          >
                             No organizers assigned.
                           </div>
                         )}
@@ -338,12 +370,19 @@ export default function AdminTeamDetailsPage() {
                   <TableBody>
                     {team.participants.map((participant) => (
                       <TableRow key={participant.participant_id}>
-                        <TableCell className="font-medium">
+                        <TableCell
+                          xstyle={styles.appAdminDashboardPageStyle12}
+                          className="sx-appAdminDashboardPageStyle12"
+                        >
                           {participant.name}
                         </TableCell>
                         <TableCell>
                           {participant.is_leader ? (
-                            <span className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
+                            <span
+                              className={styleClass(
+                                "appAdminParticipantsPageStyle1",
+                              )}
+                            >
                               Team Leader
                             </span>
                           ) : (
@@ -361,7 +400,9 @@ export default function AdminTeamDetailsPage() {
             </Card>
           </div>
         ) : (
-          <div className="text-center py-8">Team not found.</div>
+          <div className={styleClass("appAdminParticipantsPageStyle9")}>
+            Team not found.
+          </div>
         )}
       </div>
     </DashboardLayout>

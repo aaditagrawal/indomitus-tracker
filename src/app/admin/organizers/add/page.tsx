@@ -1,5 +1,8 @@
 "use client";
 
+import { styles } from "@/styles/site.stylex";
+import { styleClass } from "@/styles/classes";
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/dashboard-layout";
@@ -117,7 +120,11 @@ export default function AddOrganizerPage() {
   };
 
   if (!user) {
-    return <div className="p-8">Loading...</div>;
+    return (
+      <div className={styleClass("appAdminDashboardPageStyle1")}>
+        Loading...
+      </div>
+    );
   }
 
   // Only allow SUPERADMIN to create ADMIN accounts
@@ -128,13 +135,18 @@ export default function AddOrganizerPage() {
       userRole={user.role as "ADMIN" | "SUPERADMIN"}
       userName={user.email.split("@")[0]}
     >
-      <div className="space-y-6 max-w-md mx-auto">
-        <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-bold tracking-tight">Add New Account</h2>
+      <div className={styleClass("appAdminOrganizersAddPageStyle2")}>
+        <div className={styleClass("appAdminDashboardPageStyle3")}>
+          <h2 className={styleClass("appAdminDashboardPageStyle4")}>
+            Add New Account
+          </h2>
         </div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className={styleClass("appAdminOrganizersAddPageStyle5")}
+          >
             <Card>
               <CardHeader>
                 <CardTitle>New Account</CardTitle>
@@ -142,7 +154,10 @@ export default function AddOrganizerPage() {
                   Create a new organizer or admin account.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent
+                xstyle={styles.appAdminOrganizersAddPageStyle6}
+                className="sx-appAdminOrganizersAddPageStyle6"
+              >
                 <FormField
                   control={form.control}
                   name="email"
@@ -225,7 +240,10 @@ export default function AddOrganizerPage() {
                   )}
                 />
               </CardContent>
-              <CardFooter className="flex justify-end gap-2">
+              <CardFooter
+                xstyle={styles.appAdminDashboardPageStyle16}
+                className="sx-appAdminDashboardPageStyle16"
+              >
                 <Button
                   type="button"
                   variant="outline"
