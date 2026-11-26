@@ -14,11 +14,9 @@ const nextConfig: NextConfig = {
     config.module.rules.push({ test: /\.stylex\.js$/, use: [stylexLoader] });
     return config;
   },
-  experimental: {
-    typedRoutes: true,
-    turbo: {
-      rules: { "*.stylex.js": { loaders: [stylexLoader], as: "*.js" } },
-    },
+  typedRoutes: true,
+  turbopack: {
+    rules: { "*.stylex.js": { loaders: [stylexLoader], as: "*.js" } },
   },
 };
 
